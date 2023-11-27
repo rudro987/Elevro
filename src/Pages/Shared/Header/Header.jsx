@@ -22,7 +22,7 @@ const Header = () => {
     </>
   );
   return (
-    <div className="bg-primary">
+    <div className="shadow-md">
       <div className="navbar max-w-[85rem] mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -49,10 +49,10 @@ const Header = () => {
               {navItems}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl text-white">Elevro</a>
+          <a className="btn btn-ghost text-xl text-bodyText">Elevro</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-2 py-8 text-lg font-medium text-menuText">
+          <ul className="menu menu-horizontal px-2 py-8 text-lg font-medium text-bodyText">
             {navItems}
           </ul>
         </div>
@@ -69,13 +69,13 @@ const Header = () => {
           ) : (
             <>
               <Link to="/login">
-                <button className="btn btn-ghost text-lg font-medium text-menuText">
-                  login
+                <button className="btn btn-ghost text-lg font-medium text-bodyText">
+                  Login
                 </button>
               </Link>
               <Link to="/register">
-                <button className="btn btn-ghost text-lg font-medium text-menuText">
-                  register
+                <button className="btn btn-ghost text-lg font-medium text-bodyText">
+                  Register
                 </button>
               </Link>
             </>

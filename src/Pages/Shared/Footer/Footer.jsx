@@ -1,6 +1,7 @@
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-base-200 text-base-content">
+    <div className="bg-[#F3F3F3]">
+    <footer className="footer p-10 justify-between text-base-content max-w-[85rem] mx-auto">
       <nav>
         <header className="footer-title">Services</header>
         <a className="link link-hover">Branding</a>
@@ -38,6 +39,7 @@ const Footer = () => {
         </fieldset>
       </form>
     </footer>
+    </div>
   );
 };
 

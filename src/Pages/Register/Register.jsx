@@ -73,27 +73,26 @@ const Register = () => {
       <Helmet>
         <title>Elevro | Sign Up</title>
       </Helmet>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Register now!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
+      <div className="max-w-[85rem] mx-auto">
+        <div className="flex flex-col-reverse lg:flex-row-reverse">
+          <div className="lg:w-1/2">
+          <div className="flex justify-center items-center h-5/6">
+            <img src="https://i.ibb.co/XfQ2LfT/side-picture.png" />
+            </div>
           </div>
-          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="lg:w-1/2 py-20 bg-primary">
+          <div className="card max-w-lg mx-auto text-titleText">
+          <h1 className="text-3xl font-bold text-center pt-14 text-menuText">Create New Account</h1>
             <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Your Email</span>
+                  <span className="label-text text-menuText text-xl font-semibold">Your Email</span>
                 </label>
                 <input
                   type="Type your email"
                   {...register("email", { required: "Email is required" })}
                   placeholder="email"
-                  className={`input input-bordered focus:outline-none ${
+                  className={`input rounded-md h-[55px] input-bordered focus:outline-none bg-[#E6E6E6] border-none ${
                     errors.email &&
                     "focus:border-red-700 focus:ring-red-700 border-red-700"
                   }`}
@@ -106,13 +105,13 @@ const Register = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Name</span>
+                  <span className="label-text text-menuText text-xl font-semibold">Name</span>
                 </label>
                 <input
                   type="text"
                   {...register("name", { required: "Name is required" })}
                   placeholder="name"
-                  className={`input input-bordered focus:outline-none ${
+                  className={`input rounded-md h-[55px] input-bordered focus:outline-none bg-[#E6E6E6] border-none ${
                     errors.name &&
                     "focus:border-red-700 focus:ring-red-700 border-red-700"
                   }`}
@@ -125,23 +124,25 @@ const Register = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Photo URL</span>
+                  <span className="label-text text-menuText text-xl font-semibold">Photo URL</span>
                 </label>
+                <label htmlFor="photoURL" className="input input-bordered rounded-md h-[55px] focus:outline-none bg-[#E6E6E6] border-none flex items-center">
                 <input
-                  type="text"
+                  type="file"
                   {...register("photoURL", { required: true })}
-                  placeholder="Photo URL"
-                  className="input input-bordered focus:outline-none"
+                  placeholder="Photo URL"          
+                  id="photoURL"
                 />
+                </label>
                 {errors.photoURL && (
                   <span className="text-red-700 font-bold">
                     Photo URL is required
                   </span>
                 )}
               </div>
-              <div className="form-control space-y-2">
+              <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Blood Group</span>
+                  <span className="label-text text-menuText text-xl font-semibold">Blood Group</span>
                 </label>
                 <select
                   {...register("bloodGroup", {
@@ -150,7 +151,7 @@ const Register = () => {
                   aria-invalid={errors["bloodGroup"] ? "true" : "false"}
                   placeholder="Select blood-group"
                   defaultValue="default"
-                  className={`input input-bordered focus:outline-none ${
+                  className={`px-2 input rounded-md h-[55px] input-bordered focus:outline-none bg-[#E6E6E6] border-none ${
                     errors["bloodGroup"] &&
                     "focus:border-red-700 focus:ring-red-700 border-red-700"
                   }`}
@@ -170,9 +171,9 @@ const Register = () => {
                   </span>
                 )}
               </div>
-              <div className="form-control space-y-2">
+              <div className="form-control">
                 <label className="label">
-                  <span className="label-text">District</span>
+                  <span className="label-text text-menuText text-xl font-semibold">District</span>
                 </label>
                 <select
                   {...register("district", {
@@ -180,7 +181,7 @@ const Register = () => {
                   })}
                   aria-invalid={errors["district"] ? "true" : "false"}
                   defaultValue="default"
-                  className={`input input-bordered focus:outline-none ${
+                  className={`input rounded-md h-[55px] input-bordered focus:outline-none bg-[#E6E6E6] border-none ${
                     errors["district"] &&
                     "focus:border-red-700 focus:ring-red-700 border-red-700"
                   }`}
@@ -200,9 +201,9 @@ const Register = () => {
                   </span>
                 )}
               </div>
-              <div className="form-control space-y-2">
+              <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Sub-District</span>
+                  <span className="label-text text-menuText text-xl font-semibold">Sub-District</span>
                 </label>
                 <select
                   {...register("subDistrict", {
@@ -210,7 +211,7 @@ const Register = () => {
                   })}
                   aria-invalid={errors["subDistrict"] ? "true" : "false"}
                   defaultValue="default"
-                  className={`input input-bordered focus:outline-none ${
+                  className={`input rounded-md h-[55px] input-bordered focus:outline-none bg-[#E6E6E6] border-none ${
                     errors["subDistrict"] &&
                     "focus:border-red-700 focus:ring-red-700 border-red-700"
                   }`}
@@ -232,7 +233,7 @@ const Register = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-menuText text-xl font-semibold">Password</span>
                 </label>
                 <input
                   type="password"
@@ -253,7 +254,7 @@ const Register = () => {
                     },
                   })}
                   placeholder="password"
-                  className={`input input-bordered focus:outline-none ${
+                  className={`input rounded-md h-[55px] input-bordered focus:outline-none bg-[#E6E6E6] border-none ${
                     errors.password &&
                     "focus:border-red-700 focus:ring-red-700 border-red-700"
                   }`}
@@ -266,7 +267,7 @@ const Register = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Confirm Password</span>
+                  <span className="label-text text-menuText text-xl font-semibold">Confirm Password</span>
                 </label>
                 <input
                   type="password"
@@ -276,7 +277,7 @@ const Register = () => {
                       value === password || "The passwords do not match",
                   })}
                   placeholder="Confirm password"
-                  className={`input input-bordered focus:outline-none ${
+                  className={`input rounded-md h-[55px] input-bordered focus:outline-none bg-[#E6E6E6] border-none ${
                     errors.confirmPassword &&
                     "focus:border-red-700 focus:ring-red-700 border-red-700"
                   }`}
@@ -291,15 +292,16 @@ const Register = () => {
                 <input
                   type="submit"
                   value="Register"
-                  className="btn btn-primary"
+                  className="btn border-none rounded-md bg-secondary hover:bg-secondaryHover text-white font-bold"
                 />
               </div>
             </form>
-            <p>
+            <p className="pb-12 text-center text-menuText text-lg">
               <small>
-                Already have an account? <Link to="/login">Log in here</Link>
+                Already have an account? <Link to="/login" className="text-secondary font-bold">Log in here</Link>
               </small>
             </p>
+          </div>
           </div>
         </div>
       </div>
