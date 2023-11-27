@@ -2,9 +2,10 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const Register = () => {
   const axiosPublic = useAxiosPublic();
@@ -14,15 +15,38 @@ const Register = () => {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm();
 
   const navigate = useNavigate();
 
+  const { data: districts = [] } = useQuery({
+    queryKey: ["districts"],
+    queryFn: async () => {
+      const response = await axios.get("districts.json");
+      return response.data;
+    },
+  });
+
+  const { data: subDisctricts = [] } = useQuery({
+    queryKey: ["subDistricts"],
+    queryFn: async () => {
+      const response = await axios.get("subDisctricts.json");
+      return response.data;
+    },
+  });
+
+  const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
+
+  const password = watch("password");
+
   const onSubmit = (data) => {
+    console.log(data);
+
     createNewUser(data.email, data.password).then((result) => {
       console.log(result.user);
-      
+
       updateUser(data.name, data.photoURL)
         .then(() => {
           const userInfo = { name: data.name, email: data.email };
@@ -38,7 +62,7 @@ const Register = () => {
               });
               navigate("/");
             }
-          })
+          });
         })
         .catch((error) => console.log(error));
     });
@@ -61,19 +85,41 @@ const Register = () => {
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Your Email</span>
+                </label>
+                <input
+                  type="Type your email"
+                  {...register("email", { required: "Email is required" })}
+                  placeholder="email"
+                  className={`input input-bordered focus:outline-none ${
+                    errors.email &&
+                    "focus:border-red-700 focus:ring-red-700 border-red-700"
+                  }`}
+                />
+                {errors.email && (
+                  <span className="text-red-700 font-bold">
+                    {errors.email?.message}
+                  </span>
+                )}
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
                 <input
                   type="text"
-                  {...register("name", { required: true })}
+                  {...register("name", { required: "Name is required" })}
                   placeholder="name"
-                  className="input input-bordered"
+                  className={`input input-bordered focus:outline-none ${
+                    errors.name &&
+                    "focus:border-red-700 focus:ring-red-700 border-red-700"
+                  }`}
                 />
                 {errors.name && (
                   <span className="text-red-700 font-bold">
-                    Name is required
+                    {errors.name?.message}
                   </span>
                 )}
               </div>
@@ -85,7 +131,7 @@ const Register = () => {
                   type="text"
                   {...register("photoURL", { required: true })}
                   placeholder="Photo URL"
-                  className="input input-bordered"
+                  className="input input-bordered focus:outline-none"
                 />
                 {errors.photoURL && (
                   <span className="text-red-700 font-bold">
@@ -93,19 +139,94 @@ const Register = () => {
                   </span>
                 )}
               </div>
-              <div className="form-control">
+              <div className="form-control space-y-2">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text">Blood Group</span>
                 </label>
-                <input
-                  type="email"
-                  {...register("email", { required: true })}
-                  placeholder="email"
-                  className="input input-bordered"
-                />
-                {errors.email && (
+                <select
+                  {...register("bloodGroup", {
+                    required: "Bloog group is required",
+                  })}
+                  aria-invalid={errors["bloodGroup"] ? "true" : "false"}
+                  placeholder="Select blood-group"
+                  defaultValue="default"
+                  className={`input input-bordered focus:outline-none ${
+                    errors["bloodGroup"] &&
+                    "focus:border-red-700 focus:ring-red-700 border-red-700"
+                  }`}
+                >
+                  <option disabled value="default">
+                    Select blood-group
+                  </option>
+                  {bloodGroups.map((bloodGroup, idx) => (
+                    <option key={idx} value={bloodGroup}>
+                      {bloodGroup}
+                    </option>
+                  ))}
+                </select>
+                {errors["bloodGroup"] && (
                   <span className="text-red-700 font-bold">
-                    Email is required
+                    {errors["bloodGroup"]?.message}
+                  </span>
+                )}
+              </div>
+              <div className="form-control space-y-2">
+                <label className="label">
+                  <span className="label-text">District</span>
+                </label>
+                <select
+                  {...register("district", {
+                    required: "Selecting a district is required",
+                  })}
+                  aria-invalid={errors["district"] ? "true" : "false"}
+                  defaultValue="default"
+                  className={`input input-bordered focus:outline-none ${
+                    errors["district"] &&
+                    "focus:border-red-700 focus:ring-red-700 border-red-700"
+                  }`}
+                >
+                  <option disabled value="default">
+                    Select District
+                  </option>
+                  {districts.map((district, idx) => (
+                    <option key={idx} value={district.name}>
+                      {district.name}
+                    </option>
+                  ))}
+                </select>
+                {errors["district"] && (
+                  <span className="text-red-700 font-bold">
+                    {errors["district"]?.message}
+                  </span>
+                )}
+              </div>
+              <div className="form-control space-y-2">
+                <label className="label">
+                  <span className="label-text">Sub-District</span>
+                </label>
+                <select
+                  {...register("subDistrict", {
+                    required: "Selecting a sub district is required",
+                  })}
+                  aria-invalid={errors["subDistrict"] ? "true" : "false"}
+                  defaultValue="default"
+                  className={`input input-bordered focus:outline-none ${
+                    errors["subDistrict"] &&
+                    "focus:border-red-700 focus:ring-red-700 border-red-700"
+                  }`}
+                >
+                  <option disabled value="default">
+                    Select sub-district
+                  </option>
+                  {subDisctricts.map((subDistrict, idx) => (
+                    <option key={idx} value={subDistrict.name}>
+                      {subDistrict.name}
+                    </option>
+                  ))}
+                </select>
+                {errors["subDistrict"] && (
+                  <span className="text-red-700 font-bold">
+                    {errors["subDistrict"]?.message}
                   </span>
                 )}
               </div>
@@ -116,32 +237,53 @@ const Register = () => {
                 <input
                   type="password"
                   {...register("password", {
-                    required: true,
-                    minLength: 6,
-                    maxLength: 20,
-                    pattern: /(?=.*[A-Z])(?=.*[\W_])[a-zA-Z\d\W_]/,
+                    required: "Password is required",
+                    minLength: {
+                      value: 6,
+                      message: "Password must be 6 characters",
+                    },
+                    maxLength: {
+                      value: 20,
+                      message: "Password must be less then 20 characters",
+                    },
+                    pattern: {
+                      value: /(?=.*[A-Z])(?=.*[\W_])[a-zA-Z\d\W_]/,
+                      message:
+                        "Password must have one Uppercase and one Special letter",
+                    },
                   })}
                   placeholder="password"
-                  className="input input-bordered"
+                  className={`input input-bordered focus:outline-none ${
+                    errors.password &&
+                    "focus:border-red-700 focus:ring-red-700 border-red-700"
+                  }`}
                 />
-                {errors.password?.type === "required" && (
+                {errors.password && (
                   <span className="text-red-700 font-bold">
-                    Password is required
+                    {errors.password?.message}
                   </span>
                 )}
-                {errors.password?.type === "minLength" && (
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Confirm Password</span>
+                </label>
+                <input
+                  type="password"
+                  {...register("confirmPassword", {
+                    required: "Password is required",
+                    validate: (value) =>
+                      value === password || "The passwords do not match",
+                  })}
+                  placeholder="Confirm password"
+                  className={`input input-bordered focus:outline-none ${
+                    errors.confirmPassword &&
+                    "focus:border-red-700 focus:ring-red-700 border-red-700"
+                  }`}
+                />
+                {errors.confirmPassword && (
                   <span className="text-red-700 font-bold">
-                    Password must be 6 characters.
-                  </span>
-                )}
-                {errors.password?.type === "maxLength" && (
-                  <span className="text-red-700 font-bold">
-                    Password must be less then 20 characters.
-                  </span>
-                )}
-                {errors.password?.type === "pattern" && (
-                  <span className="text-red-700 font-bold">
-                    Password must have one Uppercase and one Special letter.
+                    {errors.confirmPassword?.message}
                   </span>
                 )}
               </div>
