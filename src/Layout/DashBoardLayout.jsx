@@ -16,7 +16,7 @@ const DashBoardLayout = () => {
           {
             isAdmin ? <>
             <li>
-            <NavLink to="/dashboard/dashBoard">
+            <NavLink to="/dashboard/home">
             <MdDashboard />
               DashBoard
             </NavLink>
@@ -28,7 +28,7 @@ const DashBoardLayout = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/users">
+            <NavLink to="/dashboard/addTest">
             <MdAddBox />
               Add a Test
             </NavLink>
@@ -67,7 +67,7 @@ const DashBoardLayout = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/myAppointments">
+            <NavLink to="/dashboard/appointments">
             <FaBookmark />
               Upcoming Appointments
             </NavLink>

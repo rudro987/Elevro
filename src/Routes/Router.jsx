@@ -46,8 +46,44 @@ const router = createBrowserRouter([
 
       //admin routes
       {
+        path: 'home',
+        element: <h1>Dashboard</h1>
+      },
+      {
+        path: 'allTests',
+        element: <h1>All tests</h1>
+      },
+      {
+        path: 'addTest',
+        element: <h1>Add a Test</h1>
+      },
+      {
         path: 'users',
         element: <h1>All Users</h1>
+      },
+      {
+        path: 'allBookings',
+        element: <h1>All Bookings</h1>
+      },
+      {
+        path: 'addBanner',
+        element: <h1>Add a Banner</h1>
+      },
+      {
+        path: 'banners',
+        element: <h1>All Banners</h1>
+      },
+      {
+        path: 'profile',
+        element: <h1>User Profile</h1>
+      },
+      {
+        path: 'appointments',
+        element: <h1>User Appointments</h1>
+      },
+      {
+        path: 'testResults',
+        element: <h1>Test Results</h1>
       },
     ]
   }

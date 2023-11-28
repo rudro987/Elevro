@@ -57,8 +57,8 @@ const Register = () => {
     const image_url = res.data.data.display_url; 
 
     createNewUser(data.email, data.password).then((result) => {
-
-      updateUser(data.name, image_url)
+      if(result.data.insertedId){
+        updateUser(data.name, image_url)
         .then(() => {
           const userInfo = { name: data.name, email: data.email, image: image_url, bloodGroup: data.bloodGroup, district: data.district, subDistrict: data.subDistrict, password: data.password};
           axiosPublic.post("/users", userInfo).then((res) => {
@@ -76,7 +76,9 @@ const Register = () => {
           });
         })
         .catch((error) => console.log(error));
-    });
+      }
+      
+    }).catch((error) => console.log(error));
   };
 
   if(loading){
