@@ -44,7 +44,7 @@ const Login = () => {
       <Helmet>
         <title>Elevro | Sign Up</title>
       </Helmet>
-      <div className="max-w-[85rem] mx-auto">
+      <div className="w-full">
         <div className="flex flex-col-reverse lg:flex-row">
           <div className="lg:w-1/2">
             <div className="flex justify-center items-center h-[750px]">

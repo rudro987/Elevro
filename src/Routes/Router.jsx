@@ -6,6 +6,8 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
+import AllTests from "../Pages/All Tests/AllTests";
+import TestDetails from "../Pages/All Tests/TestDetails";
 
 const router = createBrowserRouter([
   {
@@ -25,8 +27,12 @@ const router = createBrowserRouter([
           element: <Register></Register>,
         },
         {
-          path: 'secret',
-          element: <PrivateRoute><h1>Secret</h1></PrivateRoute>
+          path: 'all-tests',
+          element: <AllTests></AllTests>
+        },
+        {
+          path: 'all-tests/:id',
+          element: <TestDetails></TestDetails>
         }
     ]
   },

@@ -25,7 +25,7 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const { data: districts = [], isLoading } = useQuery({
+  const { data: districts = [] } = useQuery({
     queryKey: ["districts"],
     queryFn: async () => {
       const response = await axios.get("districts.json");
@@ -88,7 +88,7 @@ const Register = () => {
       <Helmet>
         <title>Elevro | Sign Up</title>
       </Helmet>
-      <div className="max-w-[85rem] mx-auto">
+      <div className="w-full">
         <div className="flex flex-col-reverse lg:flex-row-reverse">
           <div className="lg:w-1/2">
             <div className="flex justify-center items-center h-5/6">

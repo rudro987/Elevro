@@ -17,12 +17,12 @@ const Header = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/order/salad">Order</Link>
+        <Link to="/all-tests">All Tests</Link>
       </li>
     </>
   );
   return (
-    <div className="shadow-md">
+    <div className="shadow-md w-full">
       <div className="navbar max-w-[85rem] mx-auto">
         <div className="navbar-start">
           <div className="dropdown">

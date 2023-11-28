@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="bg-[#F3F3F3]">
+    <div className="bg-[#F3F3F3] w-full">
     <footer className="footer p-10 justify-between text-base-content max-w-[85rem] mx-auto">
       <nav>
         <header className="footer-title">Services</header>
