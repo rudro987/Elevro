@@ -8,6 +8,7 @@ import Register from "../Pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import AllTests from "../Pages/All Tests/AllTests";
 import TestDetails from "../Pages/All Tests/TestDetails";
+import DashBoardLayout from "../Layout/DashBoardLayout";
 
 const router = createBrowserRouter([
   {
@@ -32,13 +33,13 @@ const router = createBrowserRouter([
         },
         {
           path: 'all-tests/:id',
-          element: <TestDetails></TestDetails>
+          element: <PrivateRoute><TestDetails></TestDetails></PrivateRoute>
         }
     ]
   },
   {
     path: 'dashboard',
-    element: <PrivateRoute><h1>Dashboard</h1></PrivateRoute>,
+    element: <PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
     children: [
       //normal user routes
       

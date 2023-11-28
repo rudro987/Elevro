@@ -1,38 +1,36 @@
-import { FaAddressBook, FaBook, FaCalendar, FaHome, FaList, FaSearch, FaShoppingCart, FaUsers, FaUtensils, FaVoicemail } from "react-icons/fa";
+import { FaBookmark, FaHospitalUser, FaList, FaUsers } from "react-icons/fa";
+import { MdAddBox, MdDashboard, MdOutlineAddToQueue } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
-import useAdmin from "../Hooks/useAdmin";
+import { TbBrandBooking } from "react-icons/tb";
+import { GiTatteredBanner } from "react-icons/gi";
+import { RiProfileFill } from "react-icons/ri";
+
 
 const DashBoardLayout = () => {
-  const [isAdmin] = useAdmin();
+  const isAdmin = true;
 
   return (
-    <div className="flex max-w-[85rem] mx-auto">
+    <div className="flex max-w-[90rem] mx-auto">
       <div className="w-64 min-h-screen bg-orange-500">
         <ul className="menu p-4 uppercase">
           {
             isAdmin ? <>
             <li>
-            <NavLink to="/dashboard/adminHome">
-              <FaHome />
-              Admin Home
+            <NavLink to="/dashboard/dashBoard">
+            <MdDashboard />
+              DashBoard
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/addItems">
-              <FaUtensils />
-              Add Items
+            <NavLink to="/dashboard/allTests">
+            <FaHospitalUser />
+              All Tests
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/manageItems">
-              <FaList />
-              Manage Items
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/bookings">
-              <FaBook />
-              Manage Bookings
+            <NavLink to="/dashboard/users">
+            <MdAddBox />
+              Add a Test
             </NavLink>
           </li>
           <li>
@@ -41,60 +39,47 @@ const DashBoardLayout = () => {
               All Users
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/dashboard/allBookings">
+            <TbBrandBooking />
+              Reservations
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/addBanner">
+            <MdOutlineAddToQueue />
+              Add a Banner
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/banners">
+            <GiTatteredBanner />
+              All Banners
+            </NavLink>
+          </li>
             </>
             :
             <>
             <li>
-            <NavLink to="/dashboard/userHome">
-              <FaHome />
-              User Home
+            <NavLink to="/dashboard/profile">
+            <RiProfileFill />
+              My Profile
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/reservation">
-              <FaCalendar />
-              Reservation
+            <NavLink to="/dashboard/myAppointments">
+            <FaBookmark />
+              Upcoming Appointments
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/cart">
-              <FaShoppingCart />
-              My Cart
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/review">
-              <FaAddressBook />
-              Add a Review
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/bookings">
+            <NavLink to="/dashboard/testResults">
               <FaList />
-              My Bookings
+              Test Results
             </NavLink>
           </li>
             </>
           }
-          <div className="divider"></div>
-          <li>
-            <NavLink to="/">
-              <FaHome />
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/order/salad">
-              <FaSearch />
-              Menu
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/order/contact">
-              <FaVoicemail />
-              Contact
-            </NavLink>
-          </li>
         </ul>
       </div>
       <div className="flex-1">
