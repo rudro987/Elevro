@@ -9,6 +9,9 @@ import PrivateRoute from "./PrivateRoute";
 import AllTests from "../Pages/All Tests/AllTests";
 import TestDetails from "../Pages/All Tests/TestDetails";
 import DashBoardLayout from "../Layout/DashBoardLayout";
+import DashBoardHome from "../Pages/DashboardPages/DashBoardHome/DashBoardHome";
+import DashBoardAllTests from "../Pages/DashboardPages/DashBoardAllTests/DashBoardAllTests";
+import DashBoardAllUsers from "../Pages/DashboardPages/DashBoardAllUsers/DashBoardAllUsers";
 
 const router = createBrowserRouter([
   {
@@ -47,11 +50,11 @@ const router = createBrowserRouter([
       //admin routes
       {
         path: 'home',
-        element: <h1>Dashboard</h1>
+        element: <DashBoardHome></DashBoardHome>
       },
       {
         path: 'allTests',
-        element: <h1>All tests</h1>
+        element: <DashBoardAllTests></DashBoardAllTests>
       },
       {
         path: 'addTest',
@@ -59,7 +62,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'users',
-        element: <h1>All Users</h1>
+        element: <DashBoardAllUsers></DashBoardAllUsers>
       },
       {
         path: 'allBookings',

@@ -2,7 +2,7 @@
 const DashBoardAllTests = () => {
     return (
         <div>
-            
+            dashboard all tests
         </div>
     );
 };

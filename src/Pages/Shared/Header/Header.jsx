@@ -1,9 +1,8 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../../Providers/AuthProvider";
+import useAuth from "../../../Hooks/useAuth";
 
 const Header = () => {
-  const { user, logOutUser } = useContext(AuthContext);
+  const { user, logOutUser } = useAuth();
 
   const handleLogOut = () => {
     logOutUser()
@@ -23,7 +22,7 @@ const Header = () => {
   );
   return (
     <div className="shadow-md w-full">
-      <div className="navbar max-w-[85rem] mx-auto">
+      <div className="navbar max-w-[90rem] mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -59,8 +58,13 @@ const Header = () => {
         <div className="navbar-end">
           {user ? (
             <>
+              <ul className="menu menu-horizontal px-2 py-8 text-lg font-medium text-bodyText">
+                <li>
+                  <Link to="/dashboard/home">Dashboard</Link>
+                </li>
+              </ul>
               <button
-                className="btn btn-ghost text-lg font-medium"
+                className="btn border-none rounded-md bg-secondary hover:bg-secondaryHover text-white font-bold"
                 onClick={handleLogOut}
               >
                 Log out
@@ -69,12 +73,12 @@ const Header = () => {
           ) : (
             <>
               <Link to="/login">
-                <button className="btn btn-ghost text-lg font-medium text-bodyText">
+                <button className="btn border-none rounded-none rounded-l-md bg-secondary hover:bg-secondaryHover text-white font-bold">
                   Login
                 </button>
               </Link>
               <Link to="/register">
-                <button className="btn btn-ghost text-lg font-medium text-bodyText">
+                <button className="btn border-none rounded-none rounded-r-md bg-primary hover:bg-primary/90 text-white font-bold">
                   Register
                 </button>
               </Link>
