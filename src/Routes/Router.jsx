@@ -12,6 +12,7 @@ import DashBoardLayout from "../Layout/DashBoardLayout";
 import DashBoardHome from "../Pages/DashboardPages/DashBoardHome/DashBoardHome";
 import DashBoardAllTests from "../Pages/DashboardPages/DashBoardAllTests/DashBoardAllTests";
 import DashBoardAllUsers from "../Pages/DashboardPages/DashBoardAllUsers/DashBoardAllUsers";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -44,17 +45,14 @@ const router = createBrowserRouter([
     path: 'dashboard',
     element: <PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
     children: [
-      //normal user routes
-      
-
       //admin routes
       {
         path: 'home',
-        element: <DashBoardHome></DashBoardHome>
+        element: <AdminRoute><DashBoardHome></DashBoardHome></AdminRoute>
       },
       {
         path: 'allTests',
-        element: <DashBoardAllTests></DashBoardAllTests>
+        element: <AdminRoute><DashBoardAllTests></DashBoardAllTests></AdminRoute>
       },
       {
         path: 'addTest',
@@ -62,7 +60,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'users',
-        element: <DashBoardAllUsers></DashBoardAllUsers>
+        element: <AdminRoute><DashBoardAllUsers></DashBoardAllUsers></AdminRoute>
       },
       {
         path: 'allBookings',
@@ -76,6 +74,9 @@ const router = createBrowserRouter([
         path: 'banners',
         element: <h1>All Banners</h1>
       },
+
+      //normal user routes
+      
       {
         path: 'profile',
         element: <h1>User Profile</h1>

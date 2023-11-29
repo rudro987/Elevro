@@ -5,9 +5,10 @@ import { TbBrandBooking } from "react-icons/tb";
 import { GiTatteredBanner } from "react-icons/gi";
 import { RiProfileFill } from "react-icons/ri";
 import DashBoardHeader from "../Pages/DashboardPages/DashboardHeader/DashBoardHeader";
+import useAdmin from "../Hooks/useAdmin";
 
 const DashBoardLayout = () => {
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="bg-[#F1F5F9]">
@@ -73,7 +74,7 @@ const DashBoardLayout = () => {
                 <li>
                   <NavLink to="/dashboard/appointments">
                     <FaBookmark />
-                    Upcoming Appointments
+                    Reservations
                   </NavLink>
                 </li>
                 <li>
