@@ -6,14 +6,13 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import Loader from "../../Components/Loader";
 
 const image_api_key = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
 const image_api = `https://api.imgbb.com/1/upload?key=${image_api_key}`;
 
 const Register = () => {
   const axiosPublic = useAxiosPublic();
-  const { createNewUser, updateUser, loading } = useAuth();
+  const { createNewUser, updateUser } = useAuth();
 
   const {
     register,
@@ -57,12 +56,13 @@ const Register = () => {
     const image_url = res.data.data.display_url; 
 
     createNewUser(data.email, data.password).then((result) => {
-      if(result.data.insertedId){
+      
+      if(result){
         updateUser(data.name, image_url)
         .then(() => {
-          const userInfo = { name: data.name, email: data.email, image: image_url, bloodGroup: data.bloodGroup, district: data.district, subDistrict: data.subDistrict, password: data.password};
+          const userInfo = { name: data.name, email: data.email, image: image_url, bloodGroup: data.bloodGroup, district: data.district, subDistrict: data.subDistrict, password: data.password, role:"user", status: "active"};
           axiosPublic.post("/users", userInfo).then((res) => {
-            if (res.data.insertedId) {
+            if (res.data.insertedId) { 
               reset();
               Swal.fire({
                 position: "center",
@@ -78,12 +78,27 @@ const Register = () => {
         .catch((error) => console.log(error));
       }
       
-    }).catch((error) => console.log(error));
+    }).catch((error) => {
+      if (error.code === "auth/email-already-in-use") {
+        reset();
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "This email is already in use. Please use a different email.",
+        });
+        navigate("/register");
+      } else {
+        console.error("Firebase authentication error:", error);
+        reset();
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "An error occurred during registration. Please try again later.",
+        });
+        navigate("/register");
+      }
+    });
   };
-
-  if(loading){
-    return <span><Loader></Loader></span>
-  }
 
   return (
     <>
@@ -112,7 +127,7 @@ const Register = () => {
                   <input
                     type="Type your email"
                     {...register("email", { required: "Email is required" })}
-                    placeholder="email"
+                    placeholder="Email"
                     className={`input rounded-md h-[55px] input-bordered focus:outline-none bg-[#E6E6E6] border-none ${
                       errors.email &&
                       "focus:border-red-700 focus:ring-red-700 border-red-700"
@@ -133,7 +148,7 @@ const Register = () => {
                   <input
                     type="text"
                     {...register("name", { required: "Name is required" })}
-                    placeholder="name"
+                    placeholder="Name"
                     className={`input rounded-md h-[55px] input-bordered focus:outline-none bg-[#E6E6E6] border-none ${
                       errors.name &&
                       "focus:border-red-700 focus:ring-red-700 border-red-700"
@@ -289,7 +304,7 @@ const Register = () => {
                           "Password must have one Uppercase and one Special letter",
                       },
                     })}
-                    placeholder="password"
+                    placeholder="Password"
                     className={`input rounded-md h-[55px] input-bordered focus:outline-none bg-[#E6E6E6] border-none ${
                       errors.password &&
                       "focus:border-red-700 focus:ring-red-700 border-red-700"

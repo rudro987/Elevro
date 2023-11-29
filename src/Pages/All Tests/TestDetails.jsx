@@ -30,6 +30,7 @@ const TestDetails = () => {
             price: test.price,
             date: test.date,
             image_url: test.image_url,
+            email: user.email,
             report_status: 'pending'
         }
         await axiosPublic.post('/bookedTest', bookedTest)

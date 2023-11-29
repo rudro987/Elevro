@@ -11,11 +11,13 @@ export default {
       },
       colors: {
         primary: "#057B98",
+        primaryHover: "#015469",
         secondary: "#7734A0",
         secondaryHover: "#61168F",
         menuText: "#F3F3F3",
         titleText: "#3B3A3A",
         bodyText: "#3B3A3A",
+        blackTest: "#383838",
       },
       backgroundImage: {
         'banner': "url('https://i.ibb.co/h1bvhGV/banner-bg.png')",

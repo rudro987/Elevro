@@ -78,7 +78,7 @@ const Header = () => {
                 </button>
               </Link>
               <Link to="/register">
-                <button className="btn border-none rounded-none rounded-r-md bg-primary hover:bg-primary/90 text-white font-bold">
+                <button className="btn border-none rounded-none rounded-r-md bg-primary hover:bg-primaryHover text-white font-bold">
                   Register
                 </button>
               </Link>

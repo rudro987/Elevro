@@ -45,3 +45,18 @@
   .active{
     background-color: #7734A0 !important;
   }
+
+  .status-btn{
+    font-size: 22px !important;
+    background-color: #7734A0 !important;
+  }
+  .status-btn:hover{
+    background-color: #61168F !important;
+  }
+  .info-btn{
+    font-size: 22px !important;
+    background-color: #057B98 !important;
+  }
+  .info-btn:hover{
+    background-color: #015469 !important;
+  }
