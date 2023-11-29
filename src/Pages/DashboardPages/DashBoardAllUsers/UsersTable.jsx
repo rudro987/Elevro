@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 const UsersTable = ({ users, refetch }) => {
   const axiosSecure = useAxiosSecure();
 
-  const handleUserStatus = (targetUser) => {
+  const handleStatus = (targetUser) => {
     if (targetUser.status === "active") {
       Swal.fire({
         title: "Are you sure?",
@@ -64,30 +64,57 @@ const UsersTable = ({ users, refetch }) => {
   };
 
   const makeAdmin = (targetUser) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: `${targetUser.name} will have admin privileges`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Proceed!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        if (targetUser.role === "user") {
-          axiosSecure.patch(`/users/admin/${targetUser._id}`).then((res) => {
-            if (res.data.modifiedCount) {
-              refetch();
-              Swal.fire({
-                title: "Success!",
-                text: `${targetUser.name} is now an Admin`,
-                icon: "success",
-              });
-            }
-          });
+    if (targetUser.role === "user") {
+      Swal.fire({
+        title: "Are you sure?",
+        text: `${targetUser.name} will have admin privileges`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Proceed!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axiosSecure
+            .patch(`/users/admin/${targetUser._id}?role=user`)
+            .then((res) => {
+              if (res.data.modifiedCount) {
+                refetch();
+                Swal.fire({
+                  title: "Success!",
+                  text: `${targetUser.name} is now an Admin`,
+                  icon: "success",
+                });
+              }
+            });
         }
-      }
-    });
+      });
+    } else if (targetUser.role === "admin") {
+      Swal.fire({
+        title: "Are you sure?",
+        text: `${targetUser.name} will be removed from admin privileges`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Remove now!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axiosSecure
+            .patch(`/users/admin/${targetUser._id}?role=admin`)
+            .then((res) => {
+              if (res.data.modifiedCount) {
+                refetch();
+                Swal.fire({
+                  title: "Success!",
+                  text: `${targetUser.name} is now an User`,
+                  icon: "success",
+                });
+              }
+            });
+        }
+      });
+    }
   };
 
   return (
@@ -115,8 +142,11 @@ const UsersTable = ({ users, refetch }) => {
                 <td>{user.email}</td>
                 <td>
                   {user.role === "admin" ? (
-                    <button className="btn btn-lg bg-primary hover:bg-primaryHover">
-                      <RiAdminFill Users className="text-white text-2xl" />
+                    <button
+                      onClick={() => makeAdmin(user)}
+                      className="btn btn-lg bg-primary hover:bg-primaryHover"
+                    >
+                      <RiAdminFill className="text-white text-2xl" />
                     </button>
                   ) : (
                     <button
@@ -130,14 +160,14 @@ const UsersTable = ({ users, refetch }) => {
                 <td>
                   {user.status === "active" ? (
                     <button
-                      onClick={() => handleUserStatus(user)}
+                      onClick={() => handleStatus(user)}
                       className="btn btn-lg status-btn"
                     >
                       <HiOutlineStatusOnline className="text-white" />
                     </button>
                   ) : (
                     <button
-                      onClick={() => handleUserStatus(user)}
+                      onClick={() => handleStatus(user)}
                       className="btn btn-lg status-btn"
                     >
                       <ImBlocked className="text-white" />
