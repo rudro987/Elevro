@@ -175,7 +175,53 @@ const UsersTable = ({ users, refetch }) => {
                   )}
                 </td>
                 <td>
-                  <button className="btn btn-ghost btn-lg info-btn">
+                  <button
+                    onClick={() =>
+                      document
+                        .getElementById(`user_info${user._id}`)
+                        .showModal()
+                    }
+                    className="btn btn-ghost btn-lg info-btn"
+                  >
+                      <dialog
+                        id={`user_info${user._id}`}
+                        className="modal modal-bottom sm:modal-middle"
+                      >
+                        <div className="modal-box">
+                          <h3 className="font-bold text-2xl">
+                            {user.name}&apos;s Info
+                          </h3>
+                            <div className="flex justify-center pt-10">
+                            <img src={user.image} alt={user.name} className="rounded-xl w-[400px] h-[400px]" />
+                            </div>
+                            <div className="grid grid-cols-1 lg:grid-cols-2 py-10 gap-5">
+                            <p className="font-normal text-lg">
+                            Email: {user.email}
+                          </p>
+                          <p className="font-normal text-lg">
+                            Blood group: {user.bloodGroup}
+                          </p>
+                          <p className="font-normal text-lg">
+                            District: {user.district}
+                          </p>
+                          <p className="font-normal text-lg">
+                            Sub-District: {user.subDistrict}
+                          </p>
+                          <p className="font-normal text-lg">
+                            User Status: {user.status}
+                          </p>
+                          <p className="font-normal text-lg">
+                            User role: {user.role}
+                          </p>
+                            </div>
+                          <div className="modal-action">
+                            <form method="dialog">
+                              {/* if there is a button in form, it will close the modal */}
+                              <input type="submit" value="Close" className="btn" />
+                            </form>
+                          </div>
+                        </div>
+                      </dialog>
                     <BsInfoCircleFill className="text-white" />
                   </button>
                 </td>

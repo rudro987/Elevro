@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const image_api_key = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
-const image_api = `https://api.imgbb.com/1/upload?key=${image_api_key}`;
+const image_api = `${import.meta.env.VITE_IMAGE_HOSTING_API}?key=${image_api_key}`;
 
 const Register = () => {
   const axiosPublic = useAxiosPublic();
@@ -163,7 +163,7 @@ const Register = () => {
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text text-menuText text-xl font-semibold">
-                      Photo URL
+                      Image
                     </span>
                   </label>
                   <label
@@ -173,13 +173,13 @@ const Register = () => {
                     <input
                       type="file"
                       {...register("image", { required: true })}
-                      placeholder="Photo URL"
+                      placeholder="Upload Image"
                       id="image"
                     />
                   </label>
-                  {errors.photoURL && (
+                  {errors.image && (
                     <span className="text-red-700 font-bold">
-                      Photo URL is required
+                      Image  is required
                     </span>
                   )}
                 </div>

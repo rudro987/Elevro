@@ -60,3 +60,6 @@
   .info-btn:hover{
     background-color: #015469 !important;
   }
+  .modal-box{
+    max-width: 45rem !important;
+  }

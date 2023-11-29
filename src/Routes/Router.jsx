@@ -13,6 +13,7 @@ import DashBoardHome from "../Pages/DashboardPages/DashBoardHome/DashBoardHome";
 import DashBoardAllTests from "../Pages/DashboardPages/DashBoardAllTests/DashBoardAllTests";
 import DashBoardAllUsers from "../Pages/DashboardPages/DashBoardAllUsers/DashBoardAllUsers";
 import AdminRoute from "./AdminRoute";
+import DashBoardAddTest from "../Pages/DashboardPages/DashBoardAddTest/DashBoardAddTest";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'addTest',
-        element: <h1>Add a Test</h1>
+        element: <AdminRoute><DashBoardAddTest></DashBoardAddTest></AdminRoute>
       },
       {
         path: 'users',
