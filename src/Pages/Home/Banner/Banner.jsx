@@ -1,4 +1,17 @@
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Loader from "../../../Components/Loader";
+
 const Banner = () => {
+  const axiosSecure = useAxiosSecure();
+  const {data: activeBanner = {}, isPending: loading} = useQuery({
+    queryKey: ['activeBanner'],
+    queryFn: async () => {
+      const res = await axiosSecure.get('/banners/status?active=true');
+      console.log(res.data);
+      return res.data;
+    }
+  });
 
   const couponHandler = (e) => {
     e.preventDefault();
@@ -13,22 +26,24 @@ const Banner = () => {
     toolTipText.innerHTML = "Click to copy";
   };
 
+  if(loading){
+    return <Loader></Loader>
+  }
+
   return (
     <div className="hero pt-40">
-      <div className="hero-content flex-col lg:flex-row">
+      <div className="hero-content flex-col lg:flex-row lg:gap-10">
         <img
-          src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-          className="max-w-sm rounded-lg shadow-2xl"
+          src={activeBanner.image}
+          className="w-1/2 h-1/2 rounded-3xl shadow-2xl"
         />
         <div className="text-right">
-          <h1 className="text-5xl font-bold text-menuText">Box Office News!</h1>
+          <h1 className="text-4xl font-bold text-menuText">{activeBanner.title}</h1>
           <p className="py-6 text-menuText text-lg font-medium">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+            {activeBanner.description}
           </p>
           <div className="pb-6 text-menuText text-2xl font-medium leading-10">
-            <p>For 20% flat discount</p>
+            <p>For <span className="text-primary font-extrabold">{activeBanner.discount}%</span> flat discount</p>
             <p>
               Click to copy the coupon code :{" "}
               <span className="tooltip">
@@ -37,17 +52,17 @@ const Banner = () => {
                 </span>
                 <button
                   value="ELEVRO-NOV"
-                  className="text-secondary font-bold"
+                  className="text-primary hover:text-primaryHover font-bold"
                   name="coupon"
                   onClick={couponHandler}
                   onMouseLeave={toolTip}
                 >
-                  ELEVRO-NOV
+                  {activeBanner.coupon}
                 </button>
               </span>
             </p>
           </div>
-          <button className="bg-secondary border-none text-white hover:bg-secondaryHover font-semibold text-lg px-6 py-4 rounded-md">
+          <button className="bg-primary border-none text-white hover:bg-primaryHover font-semibold text-lg px-6 py-4 rounded-md">
             See All tests
           </button>
         </div>

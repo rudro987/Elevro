@@ -6,7 +6,6 @@ import useUser from "../../../Hooks/useUser";
 const Header = () => {
   const { user, logOutUser } = useAuth();
   const [ userStatus ] = useUser();
-
   const navigate = useNavigate();
   
   const handleLogOut = () => {
@@ -79,7 +78,7 @@ const Header = () => {
                 <button onClick={handleBlocked} className="mr-5">Dashboard</button>
               ) : (
                 <li>
-                  <Link to='/dashboard'>Dashboard</Link>
+                  <Link to='/dashboard'>{user.role === 'admin' ? 'Admin Dashboard' : 'Dashboard'}</Link>
                 </li>
               )}
 

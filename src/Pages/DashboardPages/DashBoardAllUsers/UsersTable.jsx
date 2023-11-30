@@ -19,9 +19,9 @@ const UsersTable = ({ users, refetch }) => {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, Block Now!",
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
-          axiosSecure
+          await axiosSecure
             .patch(`/users/${targetUser._id}?status=active`)
             .then((res) => {
               if (res.data.modifiedCount) {
@@ -44,9 +44,9 @@ const UsersTable = ({ users, refetch }) => {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, Unblock Now!",
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
-          axiosSecure
+          await axiosSecure
             .patch(`/users/${targetUser._id}?status=blocked`)
             .then((res) => {
               if (res.data.modifiedCount) {
@@ -73,9 +73,9 @@ const UsersTable = ({ users, refetch }) => {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, Proceed!",
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
-          axiosSecure
+          await axiosSecure
             .patch(`/users/admin/${targetUser._id}?role=user`)
             .then((res) => {
               if (res.data.modifiedCount) {
@@ -98,9 +98,9 @@ const UsersTable = ({ users, refetch }) => {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, Remove now!",
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
-          axiosSecure
+          await axiosSecure
             .patch(`/users/admin/${targetUser._id}?role=admin`)
             .then((res) => {
               if (res.data.modifiedCount) {

@@ -46,13 +46,18 @@ const AllBannersTable = ({ banners, refetch }) => {
       if (result.isConfirmed) {
         if (id !== activeBannerId) {
           if (activeBannerId) {
-            await axiosSecure.patch(`/banners/${activeBannerId}`, {
-              active: false,
-            });
+            await axiosSecure.patch(`/banners/${activeBannerId}`, { active: false });
           }
-          const res = await axiosSecure.patch(`/banners/${id}`, {
-            active: true,
-          });
+  
+          await Promise.all(
+            banners
+              .filter((banner) => banner._id !== id && banner.active === true)
+              .map(async (banner) => {
+                await axiosSecure.patch(`/banners/${banner._id}`, { active: false });
+              })
+          );
+  
+          const res = await axiosSecure.patch(`/banners/${id}`, { active: true });
           if (res.data.modifiedCount > 0) {
             setActiveBannerId(id);
             refetch();
@@ -62,6 +67,7 @@ const AllBannersTable = ({ banners, refetch }) => {
               icon: "success",
             });
           }
+          setActiveBannerId(null);
         }
       }
     });
