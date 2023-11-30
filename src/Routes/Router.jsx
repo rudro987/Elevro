@@ -14,6 +14,7 @@ import DashBoardAllTests from "../Pages/DashboardPages/DashBoardAllTests/DashBoa
 import DashBoardAllUsers from "../Pages/DashboardPages/DashBoardAllUsers/DashBoardAllUsers";
 import AdminRoute from "./AdminRoute";
 import DashBoardAddTest from "../Pages/DashboardPages/DashBoardAddTest/DashBoardAddTest";
+import UserRoute from "./UserRoute";
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
+    element: <PrivateRoute><UserRoute><DashBoardLayout></DashBoardLayout></UserRoute></PrivateRoute>,
     children: [
       //admin routes
       {

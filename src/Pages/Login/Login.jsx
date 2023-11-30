@@ -36,6 +36,23 @@ const Login = () => {
         },
       });
       navigate(from, { replace: true });
+    }).catch((error) => {
+      if (error.code === "auth/invalid-login-credentials") {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Email or Password is wrong. Please use correct login credentials.",
+        });
+        navigate("/");
+      } else {
+        console.error("Firebase authentication error:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "An error occurred during login. Please try again later.",
+        });
+        navigate("/");
+      }
     });
   };
 
