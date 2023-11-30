@@ -15,6 +15,7 @@ import DashBoardAllUsers from "../Pages/DashboardPages/DashBoardAllUsers/DashBoa
 import AdminRoute from "./AdminRoute";
 import DashBoardAddTest from "../Pages/DashboardPages/DashBoardAddTest/DashBoardAddTest";
 import UserRoute from "./UserRoute";
+import DashBoardReservations from "../Pages/DashboardPages/DashboardReservations/DashBoardReservations";
 
 const router = createBrowserRouter([
   {
@@ -66,7 +67,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'allBookings',
-        element: <h1>All Bookings</h1>
+        element: <DashBoardReservations></DashBoardReservations>
       },
       {
         path: 'addBanner',
