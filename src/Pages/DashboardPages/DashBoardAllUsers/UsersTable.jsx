@@ -120,8 +120,8 @@ const UsersTable = ({ users, refetch }) => {
   return (
     <div>
       <div className="overflow-x-auto">
+        <div className="bg-white rounded-lg w-full h-full pb-12 pt-5">
         <table className="table table-zebra w-full">
-          {/* head */}
           <thead>
             <tr className="text-center text-blackTest text-sm">
               <th>Avatar</th>
@@ -136,7 +136,7 @@ const UsersTable = ({ users, refetch }) => {
               <tr key={user._id} className="text-center text-lg">
                 <th>
                   <div className="mask mask-squircle w-12 h-12 mx-auto">
-                    <img src={user.image} alt="Avatar Tailwind CSS Component" />
+                    <img src={user.image} alt="" />
                   </div>
                 </th>
                 <td>{user.email}</td>
@@ -216,7 +216,6 @@ const UsersTable = ({ users, refetch }) => {
                             </div>
                           <div className="modal-action">
                             <form method="dialog">
-                              {/* if there is a button in form, it will close the modal */}
                               <input type="submit" value="Close" className="btn" />
                             </form>
                           </div>
@@ -229,6 +228,7 @@ const UsersTable = ({ users, refetch }) => {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );

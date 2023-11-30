@@ -26,7 +26,7 @@ const DashBoardHeader = () => {
       <div className="flex justify-between items-center">
         <h1 className="text-xl font-bold text-white">Elevro</h1>
         <div>
-        <Link to="/login">
+        <Link to="/">
                 <button className="btn btn-ghost text-lg font-medium text-menuText">
                   Home
                 </button>

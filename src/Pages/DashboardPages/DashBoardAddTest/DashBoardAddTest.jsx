@@ -85,6 +85,7 @@ const DashBoardAddTest = () => {
                       name="date"
                       control={control}
                       defaultValue={new Date()}
+                      rules={{ required: 'Date is required' }}
                       render={({ field }) => (
                         <DatePicker
                           {...field}
