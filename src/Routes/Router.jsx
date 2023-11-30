@@ -17,6 +17,7 @@ import DashBoardAddTest from "../Pages/DashboardPages/DashBoardAddTest/DashBoard
 import UserRoute from "./UserRoute";
 import DashBoardReservations from "../Pages/DashboardPages/DashboardReservations/DashBoardReservations";
 import DaashBoardAddBanner from "../Pages/DashboardPages/DashBoardAddBanner/DaashBoardAddBanner";
+import DashBoardAllBanners from "../Pages/DashboardPages/DashBoardAllBanners/DashBoardAllBanners";
 
 const router = createBrowserRouter([
   {
@@ -76,7 +77,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'banners',
-        element: <h1>All Banners</h1>
+        element: <DashBoardAllBanners></DashBoardAllBanners>
       },
 
       //normal user routes
