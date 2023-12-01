@@ -48,6 +48,7 @@ const AllTests = () => {
       <h1 className="text-4xl text-center font-bold">
         All Tests
       </h1>
+      <div className="flex flex-col items-center gap-12">
       <div className="relative mb-5 flex gap-5 items-center">
         <h1>Filter by date:</h1>
         <div>
@@ -62,11 +63,13 @@ const AllTests = () => {
           {startDate !== '' && <button className="btn border-none rounded-md bg-primary hover:bg-primaryHover text-white font-bold" onClick={() => setStartDate('')}>Clear selection</button>}
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {allTestsData && allTestsData.filter(tests => new Date(tests.date) >= new Date()).map((tests) => (
           <AllTestsCard key={tests._id} tests={tests}></AllTestsCard>
         ))}
       </div>
+      </div>
+      
     </div>
   )}
     

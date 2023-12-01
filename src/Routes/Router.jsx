@@ -21,6 +21,7 @@ import DashBoardAllBanners from "../Pages/DashboardPages/DashBoardAllBanners/Das
 import UserProfile from "../Pages/UserDashBoard/UserProfile/UserProfile";
 import UserAppointments from "../Pages/UserDashBoard/UserAppointments/UserAppointments";
 import TestResults from "../Pages/UserDashBoard/TestResults/TestResults";
+import FeaturedTests from "../Pages/FeaturedTests.jsx/FeaturedTests";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +47,12 @@ const router = createBrowserRouter([
         {
           path: 'all-tests/:id',
           element: <PrivateRoute><TestDetails></TestDetails></PrivateRoute>
-        }
+        },
+        {
+          path: 'featured-tests',
+          element: <FeaturedTests></FeaturedTests>
+        },
+        
     ]
   },
   {

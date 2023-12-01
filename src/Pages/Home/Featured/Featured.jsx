@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 const Featured = () => {
-    const [aLLtests, loading] = useAllTests();
-    const featuredTests = aLLtests?.filter(test => test.bookings > 0);
+    const [allTests, loading] = useAllTests();
+    const featuredTests = allTests?.filter(test => test.bookings > 0);
 
     if(loading){
         return <Loader></Loader>

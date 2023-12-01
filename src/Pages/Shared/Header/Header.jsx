@@ -26,6 +26,9 @@ const Header = () => {
       <li>
         <Link to="/all-tests">All Tests</Link>
       </li>
+      <li>
+        <Link to="/featured-tests">Featured Tests</Link>
+      </li>
     </>
   );
 
