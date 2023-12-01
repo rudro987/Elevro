@@ -80,7 +80,7 @@ const DashBoardAddTest = () => {
           <div className="flex gap-6">
             <div className="form-control w-full my-6">
               <label className="label">
-                <span className="label-text text-lg">Last Date</span>
+                <span className="label-text text-lg">Date</span>
               </label>
               <Controller
                       name="date"

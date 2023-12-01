@@ -37,7 +37,9 @@ const DashBoardAllTests = () => {
   }
 
   return (
-    <div className="bg-white rounded-lg w-full h-full pb-12 pt-5">
+    <div>
+    <h1 className="text-2xl font-semibold pb-10">Total test: {allTests.length}</h1>
+    <div className="bg-white rounded-lg w-full h-full pt-5">
       <table className="table table-zebra w-full">
         <thead>
           <tr className="text-center text-blackTest text-sm">
@@ -47,7 +49,7 @@ const DashBoardAllTests = () => {
             <th>Price</th>
             <th>Slots</th>
             <th>Bookings</th>
-            <th>Last Date</th>
+            <th>Date</th>
             <th>Update</th>
             <th>Delete</th>
           </tr>
@@ -88,6 +90,7 @@ const DashBoardAllTests = () => {
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

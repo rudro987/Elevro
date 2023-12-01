@@ -18,6 +18,9 @@ import UserRoute from "./UserRoute";
 import DashBoardReservations from "../Pages/DashboardPages/DashboardReservations/DashBoardReservations";
 import DaashBoardAddBanner from "../Pages/DashboardPages/DashBoardAddBanner/DaashBoardAddBanner";
 import DashBoardAllBanners from "../Pages/DashboardPages/DashBoardAllBanners/DashBoardAllBanners";
+import UserProfile from "../Pages/UserDashBoard/UserProfile/UserProfile";
+import UserAppointments from "../Pages/UserDashBoard/UserAppointments/UserAppointments";
+import TestResults from "../Pages/UserDashBoard/TestResults/TestResults";
 
 const router = createBrowserRouter([
   {
@@ -48,7 +51,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <PrivateRoute><UserRoute><DashBoardLayout></DashBoardLayout></UserRoute></PrivateRoute>,
+    element: <PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
     children: [
       //admin routes
       {
@@ -84,15 +87,15 @@ const router = createBrowserRouter([
       
       {
         path: 'profile',
-        element: <h1>User Profile</h1>
+        element: <UserRoute><UserProfile></UserProfile></UserRoute>
       },
       {
         path: 'appointments',
-        element: <h1>User Appointments</h1>
+        element: <UserRoute><UserAppointments></UserAppointments></UserRoute>
       },
       {
         path: 'testResults',
-        element: <h1>Test Results</h1>
+        element: <UserRoute><TestResults></TestResults></UserRoute>
       },
     ]
   }

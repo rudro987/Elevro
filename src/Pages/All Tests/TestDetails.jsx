@@ -90,7 +90,7 @@ const TestDetails = () => {
             Slots: {singleTest.slots} spots left.
         </p>
         <p>
-            Last date: {singleTest.date}
+            Date: {singleTest.date}
         </p>
         <p>
             Total Bookings: {singleTest.bookings}

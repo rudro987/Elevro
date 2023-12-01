@@ -87,7 +87,7 @@ const DashBoardLayout = () => {
             )}
           </ul>
         </div>
-        <div className="flex w-full flex-col min-h-screen p-5">
+        <div className="flex w-full flex-col min-h-screen pt-5">
           <Outlet></Outlet>
         </div>
       </div>
