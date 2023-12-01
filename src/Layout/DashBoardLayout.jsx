@@ -6,9 +6,14 @@ import { GiTatteredBanner } from "react-icons/gi";
 import { RiProfileFill } from "react-icons/ri";
 import DashBoardHeader from "../Pages/DashboardPages/DashboardHeader/DashBoardHeader";
 import useAdmin from "../Hooks/useAdmin";
+import Loader from "../Components/Loader";
 
 const DashBoardLayout = () => {
-  const [isAdmin] = useAdmin();
+  const [isAdmin, isAdminLoading] = useAdmin();
+
+  if(isAdminLoading) {
+    return <Loader></Loader>
+  }
 
   return (
     <div className="bg-[#F1F5F9]">

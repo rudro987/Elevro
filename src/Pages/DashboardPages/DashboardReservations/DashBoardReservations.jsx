@@ -4,16 +4,30 @@ import { MdPending, MdCancel } from "react-icons/md";
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import Swal from "sweetalert2";
 import UpdateStatus from "./UpdateStatus";
+import Loader from "../../../Components/Loader";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const DashBoardReservations = () => {
+  const [searchEmail, setSearchEmail] = useState('');
   const axiosSecure = useAxiosSecure();
-  const { data: reservations = [], refetch } = useQuery({
-    queryKey: ["reservations"],
+
+  const {
+    data: reservations = [],
+    refetch,
+    isPending: loading,
+  } = useQuery({
+    queryKey: ["reservations", searchEmail],
     queryFn: async () => {
-      const res = await axiosSecure("/allBookings");
-      return res.data;
+        const res = await axiosSecure(`/allBookings?search=${searchEmail}`);
+        return res.data;
     },
+    
   });
+  
+
+  const { register, handleSubmit, reset } = useForm();
+
   const handleDelete = (id) => {
     Swal.fire({
       title: "Cancel this reservation?",
@@ -38,9 +52,37 @@ const DashBoardReservations = () => {
     });
   };
 
+  const onSubmit = (data) => {
+    setSearchEmail(data.search);
+    reset();
+  };
+  
+
+  if (loading) {
+    return <Loader></Loader>;
+  }
+
   return (
     <div>
-      <h1 className="text-2xl font-semibold pb-10">All Reservations</h1>
+      <div className="flex justify-between items-center mb-10">
+        <h1 className="text-2xl font-semibold">All Reservations</h1>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="space-x-5 flex items-center">
+            <label className="text-xl font-semibold w-full">
+              Search by Email
+            </label>
+            <input
+              type="text"
+              {...register("search")}
+              // onChange={e => setSearchEmail(e.target.value)}
+              className="input rounded-md h-45px] input-bordered focus:outline-none bg-white border-none"
+            />
+            <button className="btn bg-primary hover:bg-primaryHover text-menuText">
+              Search
+            </button>
+          </div>
+        </form>
+      </div>
       <div className="bg-white rounded-lg w-full h-full pt-5">
         <table className="table table-zebra w-full">
           <thead>
