@@ -22,9 +22,7 @@ const DashBoardReservations = () => {
         const res = await axiosSecure(`/allBookings?search=${searchEmail}`);
         return res.data;
     },
-    
   });
-  
 
   const { register, handleSubmit, reset } = useForm();
 
