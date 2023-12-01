@@ -5,9 +5,11 @@ import { BsInfoCircleFill } from "react-icons/bs";
 import { RiAdminFill } from "react-icons/ri";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
 
 const UsersTable = ({ users, refetch }) => {
   const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
 
   const handleStatus = (targetUser) => {
     if (targetUser.status === "active") {
@@ -89,7 +91,7 @@ const UsersTable = ({ users, refetch }) => {
             });
         }
       });
-    } else if (targetUser.role === "admin") {
+    } else if (targetUser.role === "admin" && targetUser.email !== user.email) {
       Swal.fire({
         title: "Are you sure?",
         text: `${targetUser.name} will be removed from admin privileges`,

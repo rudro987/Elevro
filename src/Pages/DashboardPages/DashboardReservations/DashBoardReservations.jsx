@@ -70,9 +70,8 @@ const DashBoardReservations = () => {
               Search by Email
             </label>
             <input
-              type="text"
+              type="email"
               {...register("search")}
-              // onChange={e => setSearchEmail(e.target.value)}
               className="input rounded-md h-45px] input-bordered focus:outline-none bg-white border-none"
             />
             <button className="btn bg-primary hover:bg-primaryHover text-menuText">
@@ -105,7 +104,7 @@ const DashBoardReservations = () => {
                   </div>
                 </td>
                 <td>{reservation.test_name}</td>
-                <td>{reservation.price}</td>
+                <td>${reservation.price}</td>
                 <td>{reservation.email}</td>
                 <td>{reservation.date}</td>
                 <td>

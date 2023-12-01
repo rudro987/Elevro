@@ -16,6 +16,8 @@ const UserAppointments = () => {
             return res.data;
         }
     })
+    const filteredAppointments = userAppointments.filter(appointment => appointment.report_status === "pending");
+
     const handleDelete = id => {
         Swal.fire({
             title: "Cancel this appointment?",
@@ -44,7 +46,7 @@ const UserAppointments = () => {
         return <Loader></Loader>
     }
 
-    if(userAppointments.length === 0) return (
+    if(filteredAppointments.length === 0) return (
         <div className="text-center text-2xl font-semibold">
             <h1>You have not booked for any test yet</h1>
         </div>
@@ -52,7 +54,7 @@ const UserAppointments = () => {
     
     return (
         <div>
-            <h1 className="text-2xl font-semibold pb-10">My Appointments {userAppointments.length}</h1>
+            <h1 className="text-2xl font-semibold pb-10">My Appointments:  {filteredAppointments.length}</h1>
             <div className="bg-white rounded-lg w-full h-full pb-12 pt-5">
         <table className="table table-zebra w-full">
           <thead>
@@ -67,7 +69,7 @@ const UserAppointments = () => {
             </tr>
           </thead>
           <tbody>
-            {userAppointments.map((appointment, idx) => (
+            {filteredAppointments.map((appointment, idx) => (
               <tr key={appointment._id} className="text-center text-lg">
                 <td>{idx + 1}</td>
                 <td>
@@ -76,7 +78,7 @@ const UserAppointments = () => {
                   </div>
                 </td>
                 <td>{appointment.test_name}</td>
-                <td>{appointment.price}</td>
+                <td>${appointment.price}</td>
                 <td>{
                     appointment.report_status === 'pending' ? (
                         <button  className="btn btn-lg bg-primary hover:bg-primaryHover">

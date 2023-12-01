@@ -2,10 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../../Hooks/useAuth";
 import useUser from "../../../Hooks/useUser";
+import useAdmin from "../../../Hooks/useAdmin";
 
 const Header = () => {
   const { user, logOutUser } = useAuth();
   const [ userStatus ] = useUser();
+  const [isAdmin] = useAdmin();
   const navigate = useNavigate();
   
   const handleLogOut = () => {
@@ -13,6 +15,8 @@ const Header = () => {
       .then(() => {})
       .catch((error) => console.log(error));
   };
+
+  console.log(isAdmin);
 
   const navItems = (
     <>
@@ -75,10 +79,10 @@ const Header = () => {
             <>
               <ul className="menu menu-horizontal px-2 py-8 text-lg font-medium text-bodyText">
               {!userStatus ? (
-                <button onClick={handleBlocked} className="mr-5">Dashboard</button>
+                <button onClick={handleBlocked} className="mr-5">Dashboard Locked</button>
               ) : (
                 <li>
-                  <Link to='/dashboard'>{user.role === 'admin' ? 'Admin Dashboard' : 'Dashboard'}</Link>
+                  <Link to='/dashboard'>{isAdmin ? 'Admin Dashboard' : 'User Dashboard'}</Link>
                 </li>
               )}
 

@@ -48,7 +48,7 @@ const DashBoardAllTests = () => {
             <th>Test Name</th>
             <th>Price</th>
             <th>Slots</th>
-            <th>Bookings</th>
+            <th>Reservations</th>
             <th>Date</th>
             <th>Update</th>
             <th>Delete</th>
@@ -64,7 +64,7 @@ const DashBoardAllTests = () => {
                 </div>
               </td>
               <td>{test.test_name}</td>
-              <td>{test.price}</td>
+              <td>${test.price}</td>
               <td>{test.slots}</td>
               <td>{test.bookings}</td>
               <td>{test.date}</td>

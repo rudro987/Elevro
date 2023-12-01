@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 const AllTests = () => {
   const axiosPublic = useAxiosPublic();
@@ -34,6 +35,9 @@ const AllTests = () => {
   }
 
   return (<>
+  <Helmet>
+        <title>Elevro | All Tests</title>
+      </Helmet>
   {allTestsData?.length === 0 ? (
     <div className="max-w-[90rem] mx-auto min-h-[50rem] flex flex-col gap-5 items-center justify-center">
       <h1 className="text-center text-4xl font-bold ">No tests found for this date</h1>
@@ -55,7 +59,7 @@ const AllTests = () => {
           />
         </div>
         <div>
-          <button className="btn border-none rounded-md bg-primary hover:bg-primaryHover text-white font-bold" onClick={() => setStartDate('')}>Clear selection</button>
+          {startDate !== '' && <button className="btn border-none rounded-md bg-primary hover:bg-primaryHover text-white font-bold" onClick={() => setStartDate('')}>Clear selection</button>}
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">

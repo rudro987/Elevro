@@ -13,7 +13,7 @@ const UpdateStatus = ({ id, refetch }) => {
   const onSubmit = async (data) => {
     const reportData = {
         report_link: data.report,
-        report_status: "approved"
+        report_status: "delivered"
     }
 
     console.log(reportData);
