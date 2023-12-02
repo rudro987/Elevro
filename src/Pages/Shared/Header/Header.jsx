@@ -16,8 +16,6 @@ const Header = () => {
       .catch((error) => console.log(error));
   };
 
-  console.log(isAdmin);
-
   const navItems = (
     <>
       <li>
