@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const UpdateStatus = ({ id, refetch }) => {
-    const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
   const {
     register,
     handleSubmit,
@@ -12,19 +12,19 @@ const UpdateStatus = ({ id, refetch }) => {
 
   const onSubmit = async (data) => {
     const reportData = {
-        report_link: data.report,
-        report_status: "delivered"
-    }
+      report_link: data.report,
+      report_status: "delivered",
+    };
 
     console.log(reportData);
     const res = await axiosSecure.patch(`/allBookings/${id}`, reportData);
-    if(res.data.modifiedCount > 0){
-        Swal.fire({
-            title: "Test report submitted!",
-            text: "Reservation status is now Approved.",
-            icon: "success"
-          });
-          refetch();
+    if (res.data.modifiedCount > 0) {
+      Swal.fire({
+        title: "Test report submitted!",
+        text: "Reservation status is now Approved.",
+        icon: "success",
+      });
+      refetch();
     }
   };
 
@@ -39,14 +39,16 @@ const UpdateStatus = ({ id, refetch }) => {
           <input
             type="text"
             placeholder="Report Link"
-            {...register("report", {required: "Please provide a report link"})}
+            {...register("report", {
+              required: "Please provide a report link",
+            })}
             className="input input-bordered w-full"
           />
           {errors?.report && (
-              <span className="text-red-700 font-bold mt-2">
-                {errors.report.message}
-              </span>
-            )}
+            <span className="text-red-700 font-bold mt-2">
+              {errors.report.message}
+            </span>
+          )}
         </div>
         <input
           type="submit"
