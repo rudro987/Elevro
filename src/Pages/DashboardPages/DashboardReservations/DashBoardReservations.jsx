@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 const DashBoardReservations = () => {
-  const [searchEmail, setSearchEmail] = useState('');
+  const [searchEmail, setSearchEmail] = useState("");
   const axiosSecure = useAxiosSecure();
 
   const {
@@ -19,12 +19,14 @@ const DashBoardReservations = () => {
   } = useQuery({
     queryKey: ["reservations", searchEmail],
     queryFn: async () => {
-        const res = await axiosSecure(`/allBookings?search=${searchEmail}`);
-        return res.data;
+      const res = await axiosSecure(`/allBookings?search=${searchEmail}`);
+      return res.data;
     },
   });
 
   const { register, handleSubmit, reset } = useForm();
+
+  console.log(reservations);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -38,13 +40,18 @@ const DashBoardReservations = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await axiosSecure.delete(`/allBookings/${id}`);
+        console.log(res.data);
         if (res.data.deletedCount > 0) {
-          refetch();
-          Swal.fire({
-            title: "Canceled!",
-            text: "This reservation has been canceled.",
-            icon: "success",
-          });
+          console.log(id);
+          const res = await axiosSecure.patch(`/allTests/adminUpdate/${id}`);
+          if (res.data.modifiedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Canceled!",
+              text: "This reservation has been canceled.",
+              icon: "success",
+            });
+          }
         }
       }
     });
@@ -54,7 +61,6 @@ const DashBoardReservations = () => {
     setSearchEmail(data.search);
     reset();
   };
-  
 
   if (loading) {
     return <Loader></Loader>;
@@ -136,7 +142,7 @@ const DashBoardReservations = () => {
                 </td>
                 <td>
                   <button
-                    onClick={() => handleDelete(reservation._id)}
+                    onClick={() => handleDelete(reservation.test_id)}
                     className="btn btn-lg bg-secondary hover:bg-secondaryHover"
                   >
                     <MdCancel className="text-white text-2xl" />

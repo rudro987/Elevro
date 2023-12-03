@@ -18,15 +18,12 @@ const BookNowForm = ({ user, singleTest, refetch }) => {
     axiosSecure
       .post("/create-payment-intent", { price: singleTest.price })
       .then((res) => {
-        console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret);
       });
   }, [axiosSecure, singleTest.price]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    console.log(user, singleTest);
 
     if (!stripe || !elements) {
       return;
@@ -84,13 +81,14 @@ const BookNowForm = ({ user, singleTest, refetch }) => {
                 await axiosSecure
                   .patch(`/allTests/${singleTest._id}`)
                   .then((res) => {
-                    refetch();
                     if (res.data.modifiedCount > 0) {
+                      refetch();
                       Swal.fire({
                         title: `Success`,
                         text: `Your have successfully booked ${singleTest.test_name}. Your test date: ${singleTest.date}!`,
                         icon: "success",
                       });
+                      navigate("/all-tests");
                     }
                   });
               }

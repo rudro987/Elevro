@@ -68,7 +68,7 @@ const UserProfile = () => {
               </div>
               <button onClick={() =>
                     document.getElementById(`profile-update${_id}`).showModal()
-                  }className="btn bg-primary hover:bg-primaryHover text-2xl text-white mt-10">
+                  } className="btn bg-primary hover:bg-primaryHover text-2xl text-white mt-10">
                   <dialog id={`profile-update${_id}`} className="modal modal-bottom sm:modal-middle">
                     <UpdateProfile loggedInUser={loggedInUser} refetch={refetch}></UpdateProfile>
                 </dialog>

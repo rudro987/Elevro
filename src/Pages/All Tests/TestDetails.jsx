@@ -28,18 +28,19 @@ const TestDetails = () => {
     },
   });
 
-  const { data: existingBookings = []} = useQuery({
+  const { data: existingBookings = [] } = useQuery({
     queryKey: ["existingBookings"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/bookedTest/${user.email}`);
       return res.data;
-    }
+    },
   });
 
   const bookingExists = existingBookings?.some(
-    (booking) => booking.test_id === id)
+    (booking) => booking.test_id === id
+  );
 
-    console.log(bookingExists);
+  console.log(bookingExists);
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -83,27 +84,31 @@ const TestDetails = () => {
               </p>
             </div>
             {bookingExists ? (
-              <button disabled className="btn btn-dark">Already booked</button>
+              <button disabled className="btn btn-dark">
+                Already booked
+              </button>
             ) : (
               <button
-              className="btn bg-secondary hover:bg-secondaryHover text-menuText font-semibold"
-            >
-              <dialog
-                id={`book-now-${singleTest._id}`}
-                className="modal modal-bottom sm:modal-middle"
+                onClick={() =>
+                  document.getElementById(`book-now-${singleTest._id}`).showModal()
+                }
+                className="btn bg-secondary hover:bg-secondaryHover text-menuText font-semibold"
               >
-                <Elements stripe={stripePromise}>
-                  <BookNowForm
-                    user={user}
-                    singleTest={singleTest}
-                    refetch={refetch}
-                  ></BookNowForm>
-                </Elements>
-              </dialog>
-              Book Now
-            </button>
+                <dialog
+                  id={`book-now-${singleTest._id}`}
+                  className="modal modal-bottom sm:modal-middle"
+                >
+                  <Elements stripe={stripePromise}>
+                    <BookNowForm
+                      user={user}
+                      singleTest={singleTest}
+                      refetch={refetch}
+                    ></BookNowForm>
+                  </Elements>
+                </dialog>
+                Book Now
+              </button>
             )}
-            
           </div>
         </div>
       </div>
