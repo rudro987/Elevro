@@ -1,33 +1,33 @@
 import {
-    createBrowserRouter,
-  } from "react-router-dom";
+  createBrowserRouter,
+} from "react-router-dom";
+import DashBoardLayout from "../Layout/DashBoardLayout";
 import MainLayout from "../Layout/MainLayout";
+import AllTests from "../Pages/All Tests/AllTests";
+import TestDetails from "../Pages/All Tests/TestDetails";
+import Blog from "../Pages/Blog/Blog";
+import SingleBlogPost from "../Pages/Blog/BlogPostCard";
+import ContactUS from "../Pages/ContactUs/ContactUS";
+import DaashBoardAddBanner from "../Pages/DashboardPages/DashBoardAddBanner/DaashBoardAddBanner";
+import DashBoardAddBlog from "../Pages/DashboardPages/DashBoardAddBlog/DashBoardAddBlog";
+import DashBoardAddTest from "../Pages/DashboardPages/DashBoardAddTest/DashBoardAddTest";
+import DashBoardAllBanners from "../Pages/DashboardPages/DashBoardAllBanners/DashBoardAllBanners";
+import DashBoardAllTests from "../Pages/DashboardPages/DashBoardAllTests/DashBoardAllTests";
+import DashBoardAllUsers from "../Pages/DashboardPages/DashBoardAllUsers/DashBoardAllUsers";
+import DashBoardBlogs from "../Pages/DashboardPages/DashBoardBlogs/DashBoardBlogs";
+import DashBoardHome from "../Pages/DashboardPages/DashBoardHome/DashBoardHome";
+import DashBoardReservations from "../Pages/DashboardPages/DashboardReservations/DashBoardReservations";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import FeaturedTests from "../Pages/FeaturedTests/FeaturedTests";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-import PrivateRoute from "./PrivateRoute";
-import AllTests from "../Pages/All Tests/AllTests";
-import TestDetails from "../Pages/All Tests/TestDetails";
-import DashBoardLayout from "../Layout/DashBoardLayout";
-import DashBoardHome from "../Pages/DashboardPages/DashBoardHome/DashBoardHome";
-import DashBoardAllTests from "../Pages/DashboardPages/DashBoardAllTests/DashBoardAllTests";
-import DashBoardAllUsers from "../Pages/DashboardPages/DashBoardAllUsers/DashBoardAllUsers";
-import AdminRoute from "./AdminRoute";
-import DashBoardAddTest from "../Pages/DashboardPages/DashBoardAddTest/DashBoardAddTest";
-import UserRoute from "./UserRoute";
-import DashBoardReservations from "../Pages/DashboardPages/DashboardReservations/DashBoardReservations";
-import DaashBoardAddBanner from "../Pages/DashboardPages/DashBoardAddBanner/DaashBoardAddBanner";
-import DashBoardAllBanners from "../Pages/DashboardPages/DashBoardAllBanners/DashBoardAllBanners";
-import UserProfile from "../Pages/UserDashBoard/UserProfile/UserProfile";
-import UserAppointments from "../Pages/UserDashBoard/UserAppointments/UserAppointments";
 import TestResults from "../Pages/UserDashBoard/TestResults/TestResults";
-import FeaturedTests from "../Pages/FeaturedTests/FeaturedTests";
-import Blog from "../Pages/Blog/Blog";
-import ContactUS from "../Pages/ContactUs/ContactUS";
-import SingleBlogPost from "../Pages/Blog/SingleBlogPost";
-import ErrorPage from "../Pages/ErrorPage/ErrorPage";
-import DashBoardBlogs from "../Pages/DashboardPages/DashBoardBlogs/DashBoardBlogs";
-import DashBoardAddBlog from "../Pages/DashboardPages/DashBoardAddBlog/DashBoardAddBlog";
+import UserAppointments from "../Pages/UserDashBoard/UserAppointments/UserAppointments";
+import UserProfile from "../Pages/UserDashBoard/UserProfile/UserProfile";
+import AdminRoute from "./AdminRoute";
+import PrivateRoute from "./PrivateRoute";
+import UserRoute from "./UserRoute";
 
 const router = createBrowserRouter([
   {

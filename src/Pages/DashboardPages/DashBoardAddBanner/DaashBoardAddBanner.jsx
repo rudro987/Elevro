@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const image_api_key = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
 const image_api = `${
@@ -32,11 +33,11 @@ const DaashBoardAddBanner = () => {
         discount: parseFloat(data.discount),
         image: res.data.data.display_url,
         coupon: data.coupon,
-        active: false
+        active: false,
       };
 
       const response = await axiosSecure.post("/addBanner", newBanner);
-      
+
       if (response.data.insertedId) {
         reset();
         Swal.fire({
@@ -50,6 +51,9 @@ const DaashBoardAddBanner = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Elevro | Dashboard | Add banner</title>
+      </Helmet>
       <h1 className="text-2xl font-semibold pb-10">Add a New Banner</h1>
       <div className="bg-white w-full pt-2 pb-14 px-10 rounded-xl">
         <form onSubmit={handleSubmit(onSubmit)}>

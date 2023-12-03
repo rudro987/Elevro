@@ -4,8 +4,9 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import "react-datepicker/dist/react-datepicker.css";
 import ReactQuill from "react-quill";
-import 'react-quill/dist/quill.snow.css';
+import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const image_api_key = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
 const image_api = `${
@@ -39,7 +40,7 @@ const DashBoardAddBlog = () => {
       const response = await axiosSecure.post("/addBlog", newPost);
       if (response.data.insertedId) {
         reset();
-        setContent('');
+        setContent("");
         Swal.fire({
           title: "Success!",
           text: `New Blog Post has been successfully added`,
@@ -51,6 +52,9 @@ const DashBoardAddBlog = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Elevro | Dashboard | Add Blog</title>
+      </Helmet>
       <h1 className="text-2xl font-semibold pb-10">Add a new blog post</h1>
       <div className="bg-white w-full pt-2 pb-14 px-10 rounded-xl">
         <form onSubmit={handleSubmit(onSubmit)}>
