@@ -7,16 +7,20 @@ import { RiProfileFill } from "react-icons/ri";
 import DashBoardHeader from "../Pages/DashboardPages/DashboardHeader/DashBoardHeader";
 import useAdmin from "../Hooks/useAdmin";
 import Loader from "../Components/Loader";
+import { Helmet } from "react-helmet-async";
 
 const DashBoardLayout = () => {
   const [isAdmin, isAdminLoading] = useAdmin();
 
-  if(isAdminLoading) {
-    return <Loader></Loader>
+  if (isAdminLoading) {
+    return <Loader></Loader>;
   }
 
   return (
     <div className="bg-[#F1F5F9]">
+      <Helmet>
+        <title>Elevro | Dashboard</title>
+      </Helmet>
       <div className="py-12 bg-primary">
         <DashBoardHeader></DashBoardHeader>
       </div>

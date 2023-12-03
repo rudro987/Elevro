@@ -27,6 +27,12 @@ const Header = () => {
       <li>
         <Link to="/featured-tests">Featured Tests</Link>
       </li>
+      <li>
+        <Link to="/blog">Blog</Link>
+      </li>
+      <li>
+        <Link to="/contact-us">Contact Us</Link>
+      </li>
     </>
   );
 

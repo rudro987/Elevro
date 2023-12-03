@@ -21,12 +21,17 @@ import DashBoardAllBanners from "../Pages/DashboardPages/DashBoardAllBanners/Das
 import UserProfile from "../Pages/UserDashBoard/UserProfile/UserProfile";
 import UserAppointments from "../Pages/UserDashBoard/UserAppointments/UserAppointments";
 import TestResults from "../Pages/UserDashBoard/TestResults/TestResults";
-import FeaturedTests from "../Pages/FeaturedTests.jsx/FeaturedTests";
+import FeaturedTests from "../Pages/FeaturedTests/FeaturedTests";
+import Blog from "../Pages/Blog/Blog";
+import ContactUS from "../Pages/ContactUs/ContactUS";
+import SingleBlogPost from "../Pages/Blog/SingleBlogPost";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
         {
             path: "/",
@@ -52,6 +57,18 @@ const router = createBrowserRouter([
           path: 'featured-tests',
           element: <FeaturedTests></FeaturedTests>
         },
+        {
+          path:'blog',
+          element: <Blog></Blog>
+        },
+        {
+          path: 'blog/:id',
+          element: <SingleBlogPost></SingleBlogPost>
+        },
+        {
+          path: 'contact-us',
+          element: <ContactUS></ContactUS>
+        }
         
     ]
   },
