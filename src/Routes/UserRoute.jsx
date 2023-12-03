@@ -21,7 +21,7 @@ const UserRoute = ({ children }) => {
       text: "You have been blocked from the server by an admin!",
       footer: "Please contact us thorugh contact us page",
     }),
-    (<Navigate to="/" state={{ from: location }} replace></Navigate>)
+    (<Navigate to="/contact-us" state={{ from: location }} replace></Navigate>)
   );
 };
 

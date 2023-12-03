@@ -70,8 +70,8 @@ const ContactUS = () => {
                     </textarea>
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn border-none rounded-md h-[55px] bg-secondary hover:bg-secondaryHover text-white font-bold">
-                    Login
+                  <button className="btn border-none rounded-md h-[55px] bg-secondary hover:bg-secondaryHover text-base text-white font-bold">
+                    Send Message
                   </button>
                 </div>
               </form>

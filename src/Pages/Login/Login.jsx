@@ -44,7 +44,7 @@ const Login = () => {
           title: "Oops...",
           text: "Email or Password is wrong. Please use correct login credentials.",
         });
-        navigate("/");
+        navigate("/login");
       } else {
         console.error("Firebase authentication error:", error);
         Swal.fire({
@@ -52,7 +52,7 @@ const Login = () => {
           title: "Oops...",
           text: "An error occurred during login. Please try again later.",
         });
-        navigate("/");
+        navigate("/login");
       }
     });
   };

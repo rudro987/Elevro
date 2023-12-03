@@ -26,6 +26,8 @@ import Blog from "../Pages/Blog/Blog";
 import ContactUS from "../Pages/ContactUs/ContactUS";
 import SingleBlogPost from "../Pages/Blog/SingleBlogPost";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import DashBoardBlogs from "../Pages/DashboardPages/DashBoardBlogs/DashBoardBlogs";
+import DashBoardAddBlog from "../Pages/DashboardPages/DashBoardAddBlog/DashBoardAddBlog";
 
 const router = createBrowserRouter([
   {
@@ -95,15 +97,23 @@ const router = createBrowserRouter([
       },
       {
         path: 'allBookings',
-        element: <DashBoardReservations></DashBoardReservations>
+        element: <AdminRoute><DashBoardReservations></DashBoardReservations></AdminRoute>
       },
       {
         path: 'addBanner',
-        element: <DaashBoardAddBanner></DaashBoardAddBanner>
+        element: <AdminRoute><DaashBoardAddBanner></DaashBoardAddBanner></AdminRoute>
       },
       {
         path: 'banners',
-        element: <DashBoardAllBanners></DashBoardAllBanners>
+        element: <AdminRoute><DashBoardAllBanners></DashBoardAllBanners></AdminRoute>
+      },
+      {
+        path: 'blogs',
+        element: <AdminRoute><DashBoardBlogs></DashBoardBlogs></AdminRoute>
+      },
+      {
+        path: 'addBlog',
+        element: <AdminRoute><DashBoardAddBlog></DashBoardAddBlog></AdminRoute>
       },
 
       //normal user routes

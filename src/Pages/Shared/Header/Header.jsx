@@ -43,7 +43,7 @@ const Header = () => {
       text: "You have been blocked from the server by an admin!",
       footer: "Please contact us thorugh contact us page"
     });
-    navigate("/");
+    navigate("/contact-us");
   }
 
   return (

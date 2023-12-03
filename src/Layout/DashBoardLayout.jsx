@@ -1,4 +1,11 @@
-import { FaBookmark, FaHospitalUser, FaList, FaUsers } from "react-icons/fa";
+import {
+  FaBlog,
+  FaBloggerB,
+  FaBookmark,
+  FaHospitalUser,
+  FaList,
+  FaUsers,
+} from "react-icons/fa";
 import { MdAddBox, MdDashboard, MdOutlineAddToQueue } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import { TbBrandBooking } from "react-icons/tb";
@@ -69,6 +76,18 @@ const DashBoardLayout = () => {
                   <NavLink to="/dashboard/banners">
                     <GiTatteredBanner />
                     All Banners
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/blogs">
+                    <FaBlog />
+                    Blog Posts
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/addBlog">
+                    <FaBloggerB />
+                    Add Blog Post
                   </NavLink>
                 </li>
               </>

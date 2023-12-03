@@ -1,65 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .tooltip {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    background-color: #555;
-    width:200px;
-    color: #fff;
-    text-align: center;
-    font-size:14px;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 150%;
-    left: 50%;
-    margin-left: -75px;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  
-  .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-  }
-  
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-  }
+  position: relative;
+  display: inline-block;
+}
 
-  .active{
-    background-color: #7734A0 !important;
-  }
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: #555;
+  width: 200px;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 
-  .status-btn{
-    font-size: 22px !important;
-    background-color: #7734A0 !important;
-  }
-  .status-btn:hover{
-    background-color: #61168F !important;
-  }
-  .info-btn{
-    font-size: 22px !important;
-    background-color: #057B98 !important;
-  }
-  .info-btn:hover{
-    background-color: #015469 !important;
-  }
-  .modal-box{
-    max-width: 45rem !important;
-  }
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.active {
+  background-color: #7734a0 !important;
+}
+
+.status-btn {
+  font-size: 22px !important;
+  background-color: #7734a0 !important;
+}
+.status-btn:hover {
+  background-color: #61168f !important;
+}
+.info-btn {
+  font-size: 22px !important;
+  background-color: #057b98 !important;
+}
+.info-btn:hover {
+  background-color: #015469 !important;
+}
+.modal-box {
+  max-width: 45rem !important;
+}
+.ql-toolbar.ql-snow {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.ql-container.ql-snow{
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
