@@ -172,7 +172,6 @@ const BookNowForm = ({ user, singleTest, refetch }) => {
             onChange={(event) => setDiscount(event.target.value)}
             placeholder="Coupon Code"
             className="input input-bordered rounded-md h-[55px] focus:outline-none bg-[#E6E6E6] border-none"
-            required
           />
         </div>
         <p className="mb-5">Price: {singleTest.price} usd</p>

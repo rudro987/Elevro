@@ -26,8 +26,6 @@ const DashBoardReservations = () => {
 
   const { register, handleSubmit, reset } = useForm();
 
-  console.log(reservations);
-
   const handleDelete = (id) => {
     Swal.fire({
       title: "Cancel this reservation?",
@@ -40,9 +38,7 @@ const DashBoardReservations = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await axiosSecure.delete(`/allBookings/${id}`);
-        console.log(res.data);
         if (res.data.deletedCount > 0) {
-          console.log(id);
           const res = await axiosSecure.patch(`/allTests/adminUpdate/${id}`);
           if (res.data.modifiedCount > 0) {
             refetch();

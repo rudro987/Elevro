@@ -23,7 +23,6 @@ const UserAppointments = () => {
   const filteredAppointments = userAppointments.filter(
     (appointment) => appointment.report_status === "pending"
   );
-  console.log(filteredAppointments);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -37,7 +36,6 @@ const UserAppointments = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await axiosSecure.delete(`/userBookings/${id}`);
-        console.log(res.data);
         if (res.data.deletedCount > 0) {
           const response = await axiosSecure.patch(`allTests/userUpdate/${id}`);
           if (response.data.modifiedCount > 0) {

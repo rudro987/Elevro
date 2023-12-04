@@ -16,7 +16,6 @@ const UpdateStatus = ({ id, refetch }) => {
       report_status: "delivered",
     };
 
-    console.log(reportData);
     const res = await axiosSecure.patch(`/allBookings/${id}`, reportData);
     if (res.data.modifiedCount > 0) {
       Swal.fire({

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
+import ReactPaginate from 'react-paginate';
 
 const AllTests = () => {
   const axiosPublic = useAxiosPublic();
@@ -40,6 +41,53 @@ const AllTests = () => {
       setTestsData(filteredTests);
     }
   }, [allTestsData, startDate]);
+  
+  function PaginatedTests({ testsPerPage, testsData }) {
+    const [currentTests, setCurrentTests] = useState([]);
+    const [pageCount, setPageCount] = useState(0);
+    const [testOffset, setTestOffset] = useState(0);
+  
+    useEffect(() => {
+      const endOffset = testOffset + testsPerPage;
+      setCurrentTests(testsData.slice(testOffset, endOffset));
+      setPageCount(Math.ceil(testsData.length / testsPerPage));
+    }, [testOffset, testsPerPage, testsData]);
+  
+    const handlePageClick = ({ selected }) => {
+      const newOffset = selected * testsPerPage;
+      setTestOffset(newOffset);
+    };
+  
+    return (
+      <>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {currentTests.map((test) => (
+            <AllTestsCard key={test._id} tests={test}></AllTestsCard>
+          ))}
+        </div>
+        <ReactPaginate
+          pageCount={pageCount}
+          onPageChange={handlePageClick}
+          containerClassName="pagination"
+          previousLabel="Previous"
+          nextLabel="Next"
+          breakLabel="..."
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          activeClassName="active"
+          previousClassName="page-item"
+          nextClassName="page-item"
+          previousLinkClassName="page-link"
+          nextLinkClassName="page-link"
+          breakClassName="page-item"
+          breakLinkClassName="page-link"
+          pageClassName="page-item"
+          pageLinkClassName="page-link"
+        />
+      </>
+    );
+  }
+  
 
 
   if (loading) {
@@ -88,13 +136,7 @@ const AllTests = () => {
                 )}
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {testsData &&
-                testsData
-                  .map((tests) => (
-                    <AllTestsCard key={tests._id} tests={tests}></AllTestsCard>
-                  ))}
-            </div>
+            <PaginatedTests testsPerPage={6} testsData={testsData}></PaginatedTests>
           </div>
         </div>
       )}

@@ -22,7 +22,7 @@ const DashBoardHeader = () => {
   }
 
   return (
-    <div className="max-w-[90rem] mx-auto">
+    <div className="max-w-[90rem] mx-auto px-5">
       <div className="flex justify-between items-center">
         <h1 className="text-xl font-bold text-white">Elevro</h1>
         <div>
