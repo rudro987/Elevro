@@ -2,10 +2,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
-import Loader from "../../Components/Loader";
 
 const Login = () => {
-  const { user, logInUser, loading } = useAuth();
+  const { user, logInUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -59,10 +58,6 @@ const Login = () => {
 
   if(user){
     return navigate("/dashboard")
-  }
-
-  if(loading){
-    return <Loader></Loader>
   }
 
   return (

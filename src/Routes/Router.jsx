@@ -6,7 +6,6 @@ import MainLayout from "../Layout/MainLayout";
 import AllTests from "../Pages/All Tests/AllTests";
 import TestDetails from "../Pages/All Tests/TestDetails";
 import Blog from "../Pages/Blog/Blog";
-import SingleBlogPost from "../Pages/Blog/BlogPostCard";
 import ContactUS from "../Pages/ContactUs/ContactUS";
 import DaashBoardAddBanner from "../Pages/DashboardPages/DashBoardAddBanner/DaashBoardAddBanner";
 import DashBoardAddBlog from "../Pages/DashboardPages/DashBoardAddBlog/DashBoardAddBlog";
@@ -15,7 +14,6 @@ import DashBoardAllBanners from "../Pages/DashboardPages/DashBoardAllBanners/Das
 import DashBoardAllTests from "../Pages/DashboardPages/DashBoardAllTests/DashBoardAllTests";
 import DashBoardAllUsers from "../Pages/DashboardPages/DashBoardAllUsers/DashBoardAllUsers";
 import DashBoardBlogs from "../Pages/DashboardPages/DashBoardBlogs/DashBoardBlogs";
-import DashBoardHome from "../Pages/DashboardPages/DashBoardHome/DashBoardHome";
 import DashBoardReservations from "../Pages/DashboardPages/DashboardReservations/DashBoardReservations";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import FeaturedTests from "../Pages/FeaturedTests/FeaturedTests";
@@ -28,6 +26,7 @@ import UserProfile from "../Pages/UserDashBoard/UserProfile/UserProfile";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import UserRoute from "./UserRoute";
+import FullBlogPost from "../Pages/Blog/FullBlogPost";
 
 const router = createBrowserRouter([
   {
@@ -65,7 +64,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'blog/:id',
-          element: <SingleBlogPost></SingleBlogPost>
+          element: <FullBlogPost></FullBlogPost>
         },
         {
           path: 'contact-us',
@@ -80,8 +79,8 @@ const router = createBrowserRouter([
     children: [
       //admin routes
       {
-        path: 'home',
-        element: <AdminRoute><DashBoardHome></DashBoardHome></AdminRoute>
+        path: 'dashboard',
+        element: <h1 className="text-2xl font-bold">Dashboad</h1>
       },
       {
         path: 'allTests',

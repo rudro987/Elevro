@@ -6,14 +6,13 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import Loader from "../../Components/Loader";
 
 const image_api_key = import.meta.env.VITE_IMAGE_HOSTING_TOKEN;
 const image_api = `${import.meta.env.VITE_IMAGE_HOSTING_API}?key=${image_api_key}`;
 
 const Register = () => {
   const axiosPublic = useAxiosPublic();
-  const { user, createNewUser, updateUser, loading } = useAuth();
+  const { user, createNewUser, updateUser } = useAuth();
 
   const {
     register,
@@ -103,10 +102,6 @@ const Register = () => {
 
   if(user){
     return navigate("/dashboard")
-  }
-
-  if(loading){
-    return <Loader></Loader>
   }
 
   return (

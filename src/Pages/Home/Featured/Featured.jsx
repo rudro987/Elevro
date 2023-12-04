@@ -13,7 +13,7 @@ const Featured = () => {
     }
 
     return (
-        <div className="flex flex-col items-center gap-12">
+        <div className="flex flex-col items-center gap-12 py-20">
             <h1 className="text-3xl font-semibold text-titleText text-center">Our Featured Tests</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {

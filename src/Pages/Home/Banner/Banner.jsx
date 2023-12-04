@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Components/Loader";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   const axiosPublic = useAxiosPublic()
@@ -61,9 +62,10 @@ const Banner = () => {
               </span>
             </p>
           </div>
+          <Link to="/all-tests">
           <button className="bg-primary border-none text-white hover:bg-primaryHover font-semibold text-lg px-6 py-4 rounded-md">
             See All tests
-          </button>
+          </button></Link>
         </div>
       </div>
     </div>

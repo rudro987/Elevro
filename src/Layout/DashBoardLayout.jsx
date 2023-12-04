@@ -6,7 +6,7 @@ import {
   FaList,
   FaUsers,
 } from "react-icons/fa";
-import { MdAddBox, MdDashboard, MdOutlineAddToQueue } from "react-icons/md";
+import { MdAddBox, MdOutlineAddToQueue } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import { TbBrandBooking } from "react-icons/tb";
 import { GiTatteredBanner } from "react-icons/gi";
@@ -36,12 +36,7 @@ const DashBoardLayout = () => {
           <ul className="menu p-5 text-xl gap-5">
             {isAdmin ? (
               <>
-                <li>
-                  <NavLink to="/dashboard/home">
-                    <MdDashboard />
-                    Dashboard
-                  </NavLink>
-                </li>
+
                 <li>
                   <NavLink to="/dashboard/allTests">
                     <FaHospitalUser />

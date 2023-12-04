@@ -5,7 +5,6 @@ import BlogPostCard from "./BlogPostCard";
 
 const Blog = () => {
   const [allBlogs, loading] = useBlogs();
-  console.log(allBlogs);
 
   if (loading) {
     return <Loader></Loader>;
@@ -21,7 +20,7 @@ const Blog = () => {
 
       <div className="space-y-10">
         {allBlogs.map((post) => (
-          <BlogPostCard key={post._id} post={post}></BlogPostCard>
+          <BlogPostCard key={post._id} post={post} loading={loading}></BlogPostCard>
         ))}
       </div>
     </div>

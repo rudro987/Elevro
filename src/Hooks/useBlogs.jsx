@@ -3,7 +3,7 @@ import useAxiosPublic from "./useAxiosPublic";
 
 const useAllTests = () => {
     const axiosPublic = useAxiosPublic();
-    const { data: allBlogs = [], isLoading: loading } = useQuery({
+    const { data: allBlogs = [], isPending: loading } = useQuery({
         queryKey: ['allBlogs'],
         queryFn: async () => {
             const res = await axiosPublic.get('/allBlogs');
