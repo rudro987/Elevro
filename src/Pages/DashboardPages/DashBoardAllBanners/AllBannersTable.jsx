@@ -125,7 +125,7 @@ const AllBannersTable = ({ banners, refetch }) => {
                   </td>
                   <td>
                     <button
-                      onClick={() => handleDelete(banner)}
+                      onClick={() => handleDelete(banner._id)}
                       className="btn btn-lg status-btn"
                     >
                       <RiDeleteBin6Fill className="text-white" />
