@@ -10,7 +10,7 @@ const BlogPostCard = ({ post, loading }) => {
       <div className="hero-content flex-col gap-20 lg:flex-row">
         <img
           src={post.image}
-          className="max-w-lg rounded-lg shadow-2xl"
+          className="max-w-sm lg:max-w-lg rounded-lg shadow-2xl"
         />
         <div>
         <Link to={`/blog/${post._id}`}><h1 className="text-2xl font-bold mb-3">{post?.title}</h1></Link>
