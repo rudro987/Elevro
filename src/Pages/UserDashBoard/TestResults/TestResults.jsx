@@ -3,13 +3,15 @@ import Loader from "../../../Components/Loader";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaFilePdf } from "react-icons/fa6";
 import { FaDownload } from "react-icons/fa";
+import useAuth from "../../../Hooks/useAuth";
 
 const TestResults = () => {
   const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
   const { data: testResults = [], isPending: loading } = useQuery({
-    queryKey: ["testResults"],
+    queryKey: ["testResults", user.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/bookedTests/result`);
+      const res = await axiosSecure.get(`/bookedTests/result?email=${user.email}`);
       return res.data;
     },
   });
@@ -23,9 +25,17 @@ const TestResults = () => {
     document.body.removeChild(link);
   };
 
+  if (testResults.length === 0)
+    return (
+      <div className="text-center text-2xl font-semibold">
+        <h1>You do not have any test results available yet</h1>
+      </div>
+    );
+
   if (loading) {
     return <Loader></Loader>;
   }
+
 
   return (
     <div>

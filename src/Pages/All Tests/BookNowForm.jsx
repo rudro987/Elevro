@@ -3,8 +3,12 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Loader from "../../Components/Loader";
 
 const BookNowForm = ({ user, singleTest, refetch }) => {
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const location = useLocation();
   const axiosSecure = useAxiosSecure();
@@ -13,6 +17,8 @@ const BookNowForm = ({ user, singleTest, refetch }) => {
   const [error, setError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [transactionId, setTransactionId] = useState("");
+  const [discount, setDiscount] = useState(null);
+  const [discountPrice, setDiscountPrice] = useState(0);
 
   useEffect(() => {
     axiosSecure
@@ -21,6 +27,27 @@ const BookNowForm = ({ user, singleTest, refetch }) => {
         setClientSecret(res.data.clientSecret);
       });
   }, [axiosSecure, singleTest.price]);
+
+  const { data: discountRate = {}, isPending: loading } = useQuery({
+    queryKey: ["discountRate"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/banners/status?active=true");
+      return res.data;
+    },
+  });
+
+  console.log(discountRate);
+
+  useEffect(() => {
+    if(discount === null){
+      setDiscountPrice(0)
+    }else if(discount === discountRate.coupon){
+      setDiscountPrice(discountRate.discount)
+    }
+  }, [discount, discountRate.coupon, discountRate.discount, singleTest.price]);
+  console.log('discount Price: ', discountPrice);
+  console.log('discount Rate: ', discountRate.coupon);
+  console.log('discount: ', discount);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -111,6 +138,10 @@ const BookNowForm = ({ user, singleTest, refetch }) => {
       }
     }
   };
+  if(loading){
+    return <Loader></Loader>
+  }
+
   return (
     <div className="modal-box text-titleText">
       <h3 className="font-bold text-lg mb-10">
@@ -122,7 +153,7 @@ const BookNowForm = ({ user, singleTest, refetch }) => {
           options={{
             style: {
               base: {
-                fontSize: "16px",
+                fontSize: "16px",               
                 color: "#424770",
                 "::placeholder": {
                   color: "#aab7c4",
@@ -134,6 +165,23 @@ const BookNowForm = ({ user, singleTest, refetch }) => {
             },
           }}
         />
+        <div className="divider"></div> 
+
+        <div className="form-control pb-5">
+          <label className="label">
+            <span className="label-text text-titleText">Discount</span>
+          </label>
+          <input
+            type="text"
+            name="discount"
+            onChange={(event) => setDiscount(event.target.value)}
+            placeholder="Coupon Code"
+            className="input input-bordered rounded-md h-[55px] focus:outline-none bg-[#E6E6E6] border-none"
+            required
+          />
+        </div>
+        <p className="mb-5">Price: {singleTest.price} usd</p>
+        <p className="">Total price after discount: {singleTest.price - (singleTest.price * (discountPrice/100))} usd</p>
         <input
           type="submit"
           value="Book Now"
@@ -141,7 +189,11 @@ const BookNowForm = ({ user, singleTest, refetch }) => {
           className="mt-5 btn bg-secondary hover:bg-secondaryHover text-menuText font-semibold"
         />
         <p className="text-red-700 mt-3">{error}</p>
-        {transactionId && <p className="text-green-700 mt-3">Your transaction id : {transactionId}</p>}
+        {transactionId && (
+          <p className="text-green-700 mt-3">
+            Your transaction id : {transactionId}
+          </p>
+        )}
       </form>
       <div className="modal-action">
         <form method="dialog">

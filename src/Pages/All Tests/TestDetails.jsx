@@ -40,7 +40,6 @@ const TestDetails = () => {
     (booking) => booking.test_id === id
   );
 
-  console.log(bookingExists);
 
   if (isLoading) {
     return <Loader></Loader>;

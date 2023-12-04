@@ -2,6 +2,8 @@ import { Helmet } from "react-helmet-async";
 import Banner from "./Banner/Banner";
 import Featured from "./Featured/Featured";
 import Recommendations from "./Recommendations/Recommendations";
+import FeaturedSection from "./FeaturedSection/FeaturedSection";
+import Promotions from "./Promotions";
 
 const Home = () => {
   return (
@@ -11,8 +13,9 @@ const Home = () => {
       <Helmet>
         <title>Elevro | Home</title>
       </Helmet>
-      <h1>This is Home</h1>
+      <FeaturedSection></FeaturedSection>
       <Featured></Featured>
+      <Promotions></Promotions>
       <Recommendations></Recommendations>
       
     </div>

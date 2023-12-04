@@ -51,7 +51,7 @@ const Banner = () => {
                   Click to copy
                 </span>
                 <button
-                  value="ELEVRO-NOV"
+                  value={activeBanner.coupon}
                   className="text-primary hover:text-primaryHover font-bold"
                   name="coupon"
                   onClick={couponHandler}
