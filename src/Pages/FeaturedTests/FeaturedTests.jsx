@@ -11,7 +11,7 @@ const FeaturedTests = () => {
     return <Loader></Loader>;
   }
   return (
-    <div className="max-w-[90rem] mx-auto w-full lg:py-24">
+    <div className="max-w-[90rem] mx-auto w-full py-24">
       <div className="flex flex-col items-center gap-12">
         <Helmet>
           <title>Elevro | Featured Tests</title>

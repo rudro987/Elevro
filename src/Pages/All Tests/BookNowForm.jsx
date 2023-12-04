@@ -36,8 +36,6 @@ const BookNowForm = ({ user, singleTest, refetch }) => {
     },
   });
 
-  console.log(discountRate);
-
   useEffect(() => {
     if(discount === null){
       setDiscountPrice(0)
@@ -45,9 +43,6 @@ const BookNowForm = ({ user, singleTest, refetch }) => {
       setDiscountPrice(discountRate.discount)
     }
   }, [discount, discountRate.coupon, discountRate.discount, singleTest.price]);
-  console.log('discount Price: ', discountPrice);
-  console.log('discount Rate: ', discountRate.coupon);
-  console.log('discount: ', discount);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

@@ -31,18 +31,18 @@ const Banner = () => {
   }
 
   return (
-    <div className="hero pt-40">
+    <div className="hero pt-10 lg:pt-40">
       <div className="hero-content flex-col lg:flex-row lg:gap-10">
         <img
           src={activeBanner.image}
           className="w-1/2 h-1/2 rounded-3xl shadow-2xl"
         />
-        <div className="text-right">
-          <h1 className="text-4xl font-bold text-menuText">{activeBanner.title}</h1>
-          <p className="py-6 text-menuText text-lg font-medium">
+        <div className="text-center lg:text-right">
+          <h1 className="text-xl lg:text-4xl font-bold text-menuText">{activeBanner.title}</h1>
+          <p className="py-6 text-menuText text-base lg:text-lg font-medium">
             {activeBanner.description}
           </p>
-          <div className="pb-6 text-menuText text-2xl font-medium leading-10">
+          <div className="pb-6 text-menuText text-lg lg:text-2xl font-medium leading-10">
             <p>For <span className="text-primary font-extrabold">{activeBanner.discount}%</span> flat discount</p>
             <p>
               Click to copy the coupon code :{" "}

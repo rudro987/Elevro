@@ -30,8 +30,8 @@ const Promotions = () => {
   }
 
   return (
-    <div className="w-full bg-primary rounded-md py-20 mb-20 flex justify-center items-center">
-      <div className="w-1/2 h-full space-y-5 flex flex-col items-center justify-end pl-24">
+    <div className="w-full bg-primary rounded-md py-20 mb-20 flex flex-col lg:flex-row justify-center items-center">
+      <div className="lg:w-1/2 h-full space-y-5 flex flex-col items-start lg:items-center lg:pl-24 pb-5 lg:pb-0">
         <h1 className="text-5xl text-menuText font-bold text-center">
           Get {promotions.discount}% Discount
         </h1>
@@ -39,7 +39,7 @@ const Promotions = () => {
           Use the Coupon code by click and copy
         </p>
       </div>
-      <div className="w-1/2 h-full flex items-center justify-center">
+      <div className="lg:w-1/2 h-full flex items-center justify-center">
         <span className="tooltip">
           <span className="tooltiptext" id="myTooltip">
             Click to copy

@@ -64,7 +64,7 @@ const AllTests = () => {
           </button>
         </div>
       ) : (
-        <div className="max-w-[90rem] mx-auto w-full flex flex-col grow gap-10 lg:py-24">
+        <div className="max-w-[90rem] mx-auto w-full flex flex-col grow gap-10 py-24">
           <h1 className="text-4xl text-center font-bold">All Tests</h1>
           <div className="flex flex-col items-center gap-12">
             <div className="relative mb-5 flex gap-5 items-center">

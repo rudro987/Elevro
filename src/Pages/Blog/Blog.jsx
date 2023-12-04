@@ -10,7 +10,7 @@ const Blog = () => {
     return <Loader></Loader>;
   }
   return (
-    <div className="max-w-[90rem] mx-auto w-full lg:py-24">
+    <div className="max-w-[90rem] mx-auto w-full py-24">
       <Helmet>
         <title>Elevro | Blog</title>
       </Helmet>

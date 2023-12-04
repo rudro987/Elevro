@@ -74,7 +74,7 @@ const Header = () => {
               {navItems}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl text-bodyText">Elevro</a>
+          <Link className="btn btn-ghost text-xl lg:text-4xl text-bodyText">Elevro</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-2 py-8 text-lg font-medium text-bodyText">

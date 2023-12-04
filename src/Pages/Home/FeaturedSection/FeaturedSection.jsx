@@ -1,7 +1,7 @@
 
 const FeaturedSection = () => {
     return (
-        <div className="pb-10 px-4 sm:px-6 lg:px-8">
+        <div className="pb-10 pt-10 lg:pt-0 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-xl text-center">
             <h2 className="mt-6 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl lg:text-5xl">
               Why choose Elevro?
