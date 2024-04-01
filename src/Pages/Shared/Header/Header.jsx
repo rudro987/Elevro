@@ -2,12 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../../Hooks/useAuth";
 import useUser from "../../../Hooks/useUser";
-import useAdmin from "../../../Hooks/useAdmin";
 
 const Header = () => {
   const { user, logOutUser } = useAuth();
   const [ userStatus ] = useUser();
-  const [isAdmin] = useAdmin();
   const navigate = useNavigate();
   
   const handleLogOut = () => {
@@ -74,7 +72,9 @@ const Header = () => {
               {navItems}
             </ul>
           </div>
-          <Link className="btn btn-ghost text-xl lg:text-4xl text-bodyText">Elevro</Link>
+          <Link to="/">
+            <img src="https://i.ibb.co/S09VYwN/elevro-logo.png" className="w-9/12 lg:w-7/12" alt="" />
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-2 py-8 text-lg font-medium text-bodyText">
@@ -86,10 +86,10 @@ const Header = () => {
             <>
               <ul className="menu menu-horizontal px-2 py-8 text-lg font-medium text-bodyText">
               {!userStatus ? (
-                <button onClick={handleBlocked} className="mr-5">Dashboard Locked</button>
+                <button onClick={handleBlocked} className="mr-5">Dashboard</button>
               ) : (
                 <li>
-                  <Link to='/dashboard'>{isAdmin ? 'Admin Dashboard' : 'User Dashboard'}</Link>
+                  <Link to='/dashboard'>Dashboard</Link>
                 </li>
               )}
 

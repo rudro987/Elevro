@@ -6,6 +6,7 @@ import MainLayout from "../Layout/MainLayout";
 import AllTests from "../Pages/All Tests/AllTests";
 import TestDetails from "../Pages/All Tests/TestDetails";
 import Blog from "../Pages/Blog/Blog";
+import FullBlogPost from "../Pages/Blog/FullBlogPost";
 import ContactUS from "../Pages/ContactUs/ContactUS";
 import DaashBoardAddBanner from "../Pages/DashboardPages/DashBoardAddBanner/DaashBoardAddBanner";
 import DashBoardAddBlog from "../Pages/DashboardPages/DashBoardAddBlog/DashBoardAddBlog";
@@ -26,7 +27,6 @@ import UserProfile from "../Pages/UserDashBoard/UserProfile/UserProfile";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import UserRoute from "./UserRoute";
-import FullBlogPost from "../Pages/Blog/FullBlogPost";
 
 const router = createBrowserRouter([
   {

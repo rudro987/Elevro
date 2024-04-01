@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="w-full h-full flex items-center justify-center">
       <nav>
       <Link to="/">
-        <h1 className="text-3xl font-bold text">Elevro</h1>
+      <img src="https://i.ibb.co/S09VYwN/elevro-logo.png" className="w-1/2 lg:w-7/12" alt="" />
         </Link>
       </nav>
       </div>

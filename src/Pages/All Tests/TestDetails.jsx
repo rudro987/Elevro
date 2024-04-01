@@ -46,7 +46,7 @@ const TestDetails = () => {
   }
 
   return (
-    <div className="max-w-[85rem] mx-auto flex flex-col gap-10 grow w-full lg:py-24">
+    <div className="max-w-[85rem] mx-auto flex flex-col gap-10 grow w-full py-24">
       <h1 className="text-4xl text-center font-bold">
         {singleTest.test_name} Details
       </h1>
@@ -54,7 +54,7 @@ const TestDetails = () => {
         <div className="hero-content flex-col lg:flex-row gap-20">
           <img
             src={singleTest.image_url}
-            className="max-w-2xl rounded-lg shadow-2xl"
+            className="lg:max-w-2xl rounded-lg shadow-2xl"
             alt={singleTest.test_name}
           />
           <div>

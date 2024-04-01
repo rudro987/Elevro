@@ -53,7 +53,7 @@ const Register = () => {
         "Content-Type": "multipart/form-data",
       },
     });
-    const image_url = res.data.data.display_url; 
+    const image_url = res.data.data.display_url;
 
     createNewUser(data.email, data.password).then((result) => {
       

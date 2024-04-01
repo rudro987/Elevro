@@ -87,7 +87,6 @@ const AllTests = () => {
       </>
     );
   }
-  
 
 
   if (loading) {
