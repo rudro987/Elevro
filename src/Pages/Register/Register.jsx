@@ -295,19 +295,19 @@ const Register = () => {
                     type="password"
                     {...register("password", {
                       required: "Password is required",
-                      // minLength: {
-                      //   value: 6,
-                      //   message: "Password must be 6 characters",
-                      // },
-                      // maxLength: {
-                      //   value: 20,
-                      //   message: "Password must be less then 20 characters",
-                      // },
-                      // pattern: {
-                      //   value: /(?=.*[A-Z])(?=.*[\W_])[a-zA-Z\d\W_]/,
-                      //   message:
-                      //     "Password must have one Uppercase and one Special letter",
-                      // },
+                      minLength: {
+                        value: 6,
+                        message: "Password must be 6 characters",
+                      },
+                      maxLength: {
+                        value: 20,
+                        message: "Password must be less then 20 characters",
+                      },
+                      pattern: {
+                        value: /(?=.*[A-Z])(?=.*[\W_])[a-zA-Z\d\W_]/,
+                        message:
+                          "Password must have one Uppercase and one Special letter",
+                      },
                     })}
                     placeholder="Password"
                     className={`input rounded-md h-[55px] input-bordered focus:outline-none bg-[#E6E6E6] border-none ${
