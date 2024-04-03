@@ -111,29 +111,43 @@ const DashBoardReservations = () => {
                 <td>{reservation.date}</td>
                 <td>
                   {reservation.report_status === "pending" ? (
-                    <button
-                      onClick={() =>
-                        document
-                          .getElementById(`test-update${reservation._id}`)
-                          .showModal()
-                      }
-                      className="btn btn-lg bg-primary hover:bg-primaryHover"
-                    >
-                      <dialog
-                        id={`test-update${reservation._id}`}
-                        className="modal modal-bottom sm:modal-middle"
-                      >
-                        <UpdateStatus
-                          id={reservation._id}
-                          refetch={refetch}
-                        ></UpdateStatus>
-                      </dialog>
-                      <MdPending className="text-white text-2xl" />
-                    </button>
+                    <>
+                      <span className="tooltip">
+                        <span className="tooltiptext" id="myTooltip">
+                          Pending. click to submit
+                        </span>
+                        <button
+                          onClick={() =>
+                            document
+                              .getElementById(`test-update${reservation._id}`)
+                              .showModal()
+                          }
+                          className="btn btn-lg bg-primary hover:bg-primaryHover"
+                        >
+                          <dialog
+                            id={`test-update${reservation._id}`}
+                            className="modal modal-bottom sm:modal-middle"
+                          >
+                            <UpdateStatus
+                              id={reservation._id}
+                              refetch={refetch}
+                            ></UpdateStatus>
+                          </dialog>
+                          <MdPending className="text-white text-2xl" />
+                        </button>
+                      </span>
+                    </>
                   ) : (
-                    <button className="btn btn-lg bg-primary hover:bg-primaryHover">
-                      <AiOutlineDeliveredProcedure className="text-white text-2xl" />
-                    </button>
+                    <>
+                      <span className="tooltip">
+                        <span className="tooltiptext" id="myTooltip">
+                          Delivered
+                        </span>
+                        <button className="btn btn-lg bg-primary hover:bg-primaryHover">
+                          <AiOutlineDeliveredProcedure className="text-white text-2xl" />
+                        </button>
+                      </span>
+                    </>
                   )}
                 </td>
                 <td>

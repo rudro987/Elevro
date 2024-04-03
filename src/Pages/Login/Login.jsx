@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 
 const Login = () => {
-  const { user, logInUser, googleSignIn } = useAuth();
+  const { user, logInUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
